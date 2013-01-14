@@ -1,0 +1,1 @@
+#ifndef __SYSW_H_#define __SYSW_H_#ifdef __SYSW_C_#define COLUMN1 15#endifvoid sysw_click(	Point *p,	short modifiers);static void draw_r_cursor(void);void sysw_keypress(	long key);void sysw_undo_keypress(void);void update_sys_window(void);void activate_system_window(	long is_active);void set_maxscroll_sysw(void);#endif  _SYSW_H

@@ -1,0 +1,1 @@
+#ifndef GOTOD_H#define GOTOD_H#define GOTO_RESID 129#define GoTo_OK		1#define GoTo_CANCEL 2#define WHERE_TXT	3/*static text item "Address:" 4*/#define SYSTEM_CBX	5#define VIRTUAL_RDB		6#define PHYSICAL_RDB	7#define USE_VIRTMEMW	0#define USE_PHYSMEMW	1#define USE_PROGMEMW	2void goto_address(	long which);#endif GOTOD_H

@@ -1,0 +1,1 @@
+#ifndef _VAX_TO_68000_H_#define _VAX_TO_68000_H_#ifndef MEMORY_H#include "mmemory.h"#endif#define PPC#ifdef PPC#define extended double#endifextern long floating_underflow;longv2m_long(	long l);shortv2m_short(	short s);extended f2e(	v_float f);unsigned long e2f(	extended f);char *f2s(	v_float f);#endif _VAX_TO_68000_H_

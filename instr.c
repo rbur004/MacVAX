@@ -1,0 +1,1 @@
+#define INSTRS_C#include "func.h"#include "exception.h"#include "instrs.h"void setupioptab(void){    OPTAB p;    for ( p = optab; p->iname; p++ )        ioptab[ p->val & 0xff ] = p - optab;		}

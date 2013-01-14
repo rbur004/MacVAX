@@ -1,0 +1,1 @@
+#ifndef CLOCK_H#define CLOCK_H#ifdef CLOCK_Cstatic void clock_overflow(void);#endifvoid clock_tick(	long tick_type,	long Number_of_ticks);void clear_clock_interrupt(void);address clock_interrupt(void);#endif CLOCK_H

@@ -1,0 +1,1 @@
+#ifndef DISPLAY_PROCESS_H#define DISPLAY_PROCESS_Hextern short display_process_id;void save_display_process_ctx(void);void load_display_process_ctx(void);void init_display_process(void);#endif /*DISPLAY_PROCESS_H*/

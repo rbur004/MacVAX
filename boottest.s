@@ -1,0 +1,1 @@
+.boot.textmovl #3,r0

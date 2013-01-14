@@ -1,0 +1,1 @@
+#include	<StdLib.h>#include	<StdIO.h>#include	<OSutils.h>#include 	<ToolUtils.h>unsigned long time = 0;main(){	(void) ReadDateTime (&time) ;	printf("%x %x\n", time, time * 100);}

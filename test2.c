@@ -1,0 +1,1 @@
+main(){int i;extern extended flt_imm[64];	for(i = 0; i < 64; i++)		printf("%d %e\n", i, flt_imm[i]);}

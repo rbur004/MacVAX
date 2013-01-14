@@ -1,0 +1,1 @@
+#ifndef _PATCH_A_OUT_H_#define _PATCH_A_OUT_H_/*patch_a_out.c*/void patch_header(	struct exec_struct *h);void patch_rel_info(	RELINFO *r);void patch_nlist(	struct nlist *n);#endif _PATCH_A_OUT_H_

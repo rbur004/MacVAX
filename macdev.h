@@ -1,0 +1,1 @@
+#ifndef _MACDEV_H_#define _MACDEV_H_#define NULL_COMMAND	0#define NEW_PROCESS		1#define KILL_PROCESS	2#define RESET_PROCESS	3#define SHUTDOWN_SYS	4/*Functions*/#ifndef MEMORY_H#include "mmemory.h"#endif  MEMORY_Hlong set_macvax_interrupt(	long command);void clear_macvax_interrupt(void);address macvax_interrupt(void);#endif _MACDEV_H_

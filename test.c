@@ -1,0 +1,1 @@
+typedef struct { long a; long b; } quad;quad setquad() { quad x; x.a = 1; x.b = 2; return x; }void printquad ( quad q ) { printf("%8.8x%8.8x\n", q.a, q.b ); }main() {quad x; printquad(x = setquad()); }

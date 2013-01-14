@@ -1,0 +1,1 @@
+#ifndef _LAUNCH_H_#define _LAUNCH_H_struct launch_params{	char *name;	short altsndbuff;} ;void EXEC( struct launch_params * ) ;#endif  _LAUNCH_H_
