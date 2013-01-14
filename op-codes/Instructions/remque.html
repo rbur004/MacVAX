@@ -1,1 +1,59 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>REMQUE Instruction</TITLE></HEAD><BODY><H2>REMQUE Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td valign=top><b>Purpose:</b></td><td>Remove an entry from the head or tail of an absolute queue </td><tr>	<td valign=top><b>Format:</b></td><td>opcode entry.ab, addr.wl</td><tr>	<td valign=top><b>Operation:</b></td><td>		<dl>		<dt>if {all memory accesses can be completed} then			<dd>{Interrupts off}			<dd> succ &lt- (entry)			<dd> pred &lt- (entry + 4)			<dd> (succ + 4) &lt- pred;			<dd> (pred) &lt- succ;			<dd>{Interrupts On}		</dl></td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- succ LSS pred; <br>			Z &lt- succ EQL pred; Removed the Last Entry<br>			V &lt- entry EQL pred; Entry was the Head<br>				C &lt- succ LSSU pred;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>Reserved Operand</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>0F</td><td>REMQUE</td><td>Remove Entry from Queue</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>The queue entry specified by the entry operand is removed from the queue. The address operand is replaced by the address of the entry removed. If there was no entry in the queue to be removed, the condition code V-bit is set; otherwise it is cleared. If the entry was the last element in the queue, the condition code Z-bit is set; otherwise it is cleared. The removal is a non-interruptible interlocked operation. Before performing any part of the operation, the processor validates that the entire operation can be completed. This ensures that if a memory management exception occurs the queue is left in a consistent state.</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>Because the removal is non-interruptible, processes running in kernel mode can share queues with interrupt service routines.		<dt>2.<dd>The INSQUE and REMQUE instructions are implemented such that cooperating software processes may access a shared list without additional synchronization.		<dt>3.<dd>During access validation, any access which cannot be completed results in a memory management exception even though the queue instruction is not started.		<dt>4.<dd>A reserved operand fault occurs if any of entry, pred or succ is an address that is not longword aligned, (i.e. for which bits &lt1:0&gt NEQU 0). In this case the queue is not altered.		<dt>5.<dd>4 above may be false, as might the statement in the description claiming that this operation is interlocked. Later VAX manuals don't mention the interlock and state that absolute queues entries may be on arbitrary boundaries (and therefore cannot be interlocked). MacVAX enforces 4 above, (i.e. queue entries must be long word aligned). The change may be due to the lack of a secondary interlock bit found in the newer relative queue instructions. This extra lock bit is needed to ensure queue integrity in a multi-processor environment. 		</dl></td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>REMQUE Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>REMQUE Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td valign=top><b>Purpose:</b></td><td>Remove an entry from the head or tail of an absolute queue </td>
+
+<tr>	<td valign=top><b>Format:</b></td><td>opcode entry.ab, addr.wl</td>
+
+<tr>	<td valign=top><b>Operation:</b></td><td>
+		<dl>
+		<dt>if {all memory accesses can be completed} then
+			<dd>{Interrupts off}
+			<dd> succ &lt- (entry)
+			<dd> pred &lt- (entry + 4)
+			<dd> (succ + 4) &lt- pred;
+			<dd> (pred) &lt- succ;
+			<dd>{Interrupts On}
+		</dl></td>
+
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- succ LSS pred; <br>
+			Z &lt- succ EQL pred; Removed the Last Entry<br>
+			V &lt- entry EQL pred; Entry was the Head<br>	
+			C &lt- succ LSSU pred;</td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Reserved Operand</td>
+
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>0F</td><td>REMQUE</td><td>Remove Entry from Queue</td>
+			</table>
+		</td>
+
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>The queue entry specified by the entry operand is removed from the queue. The address operand is replaced by the address of the entry removed. If there was no entry in the queue to be removed, the condition code V-bit is set; otherwise it is cleared. If the entry was the last element in the queue, the condition code Z-bit is set; otherwise it is cleared. The removal is a non-interruptible interlocked operation. Before performing any part of the operation, the processor validates that the entire operation can be completed. This ensures that if a memory management exception occurs the queue is left in a consistent state.</td>
+
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>Because the removal is non-interruptible, processes running in kernel mode can share queues with interrupt service routines.
+		<dt>2.<dd>The INSQUE and REMQUE instructions are implemented such that cooperating software processes may access a shared list without additional synchronization.
+		<dt>3.<dd>During access validation, any access which cannot be completed results in a memory management exception even though the queue instruction is not started.
+		<dt>4.<dd>A reserved operand fault occurs if any of entry, pred or succ is an address that is not longword aligned, (i.e. for which bits &lt1:0&gt NEQU 0). In this case the queue is not altered.
+		<dt>5.<dd>4 above may be false, as might the statement in the description claiming that this operation is interlocked. Later VAX manuals don't mention the interlock and state that absolute queues entries may be on arbitrary boundaries (and therefore cannot be interlocked). MacVAX enforces 4 above, (i.e. queue entries must be long word aligned). The change may be due to the lack of a secondary interlock bit found in the newer relative queue instructions. This extra lock bit is needed to ensure queue integrity in a multi-processor environment. 
+		</dl></td>
+</table>
+
+</BODY>
+
+</HTML>

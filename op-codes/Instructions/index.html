@@ -1,1 +1,51 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>INDEX Instruction</TITLE></HEAD><BODY><H2>INDEX Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td valign=top><b>Purpose:</b></td><td>Index calculation of arrays of fixed length data, bit fields and strings.</td><tr>	<td valign=top><b>Format:</b></td><td>opcode subscript.rl, low.rl, high.rl, size.rl, indexin.rl, indexout.wl</td><tr>	<td valign=top><b>Operation:</b></td><td>	<dl>	<dt>indexout &lt- {indexin + subscript} * size;	<dt>if { subscript LSS low} or {subscript GTR high} then		<dd>{subscipt range trap};	</dl></td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- indexout LSS 0;<br>			Z &lt- indexout EQL 0;<br>			V &lt- 0;<br>			C &lt- 0;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>Subscript Range Trap</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>0A</td><td>INDEX</td><td>Index</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>The indexin operand is added to the subscript operand and the sum multiplied by the size operand. The indexout operand is replaced by the result. If the subscript operand is less than the low operand or greater than the high operand, a subscript range trap is taken.</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>No arithmetic exception other than subscript range can result from this instruction. Thus no indication is given if overflow occurs in either the add or multiply steps. If overflow occurs on the add step the sum is the low order 32 bits of the true result. If overflow occurs on the multiply step the index operand is replaced by the low order 32 bits of the true product of the sum and the size operand. IN the normal use of this instruction, overflow cannot occur without a subscript range trap occurring.	</td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>INDEX Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>INDEX Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td valign=top><b>Purpose:</b></td><td>Index calculation of arrays of fixed length data, bit fields and strings.</td>
+
+<tr>	<td valign=top><b>Format:</b></td><td>opcode subscript.rl, low.rl, high.rl, size.rl, indexin.rl, indexout.wl</td>
+
+<tr>	<td valign=top><b>Operation:</b></td><td>
+	<dl>
+	<dt>indexout &lt- {indexin + subscript} * size;
+	<dt>if { subscript LSS low} or {subscript GTR high} then
+		<dd>{subscipt range trap};
+	</dl></td>
+
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- indexout LSS 0;<br>
+			Z &lt- indexout EQL 0;<br>
+			V &lt- 0;<br>
+			C &lt- 0;</td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Subscript Range Trap</td>
+
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>0A</td><td>INDEX</td><td>Index</td>
+			</table>
+		</td>
+
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>The indexin operand is added to the subscript operand and the sum multiplied by the size operand. The indexout operand is replaced by the result. If the subscript operand is less than the low operand or greater than the high operand, a subscript range trap is taken.</td>
+
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>No arithmetic exception other than subscript range can result from this instruction. Thus no indication is given if overflow occurs in either the add or multiply steps. If overflow occurs on the add step the sum is the low order 32 bits of the true result. If overflow occurs on the multiply step the index operand is replaced by the low order 32 bits of the true product of the sum and the size operand. IN the normal use of this instruction, overflow cannot occur without a subscript range trap occurring.
+	</td>
+</table>
+
+</BODY>
+
+</HTML>

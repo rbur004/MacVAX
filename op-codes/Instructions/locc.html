@@ -1,1 +1,61 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>LOCC and SKP Instruction</TITLE></HEAD><BODY><H2>LOCC and SKPC Instructions</h2><table border=0 valign=top cellpadding=5><tr>	<td valign=top><b>Purpose:</b></td><td>To find a character or skip characters in a character string</td><tr>	<td valign=top><b>Format:</b></td><td>opcode char.rb, len.rw, addr.ab</td><tr>	<td valign=top><b>Operation:</b></td><td>			<dl>			<dt>R0 &lt- len;			<dt>R1 &lt- addr;			<dt><b>LOCC</b>			<dt>while { R0 &gt 0 AND (R1) NEQ char}			<dd>R0 &lt- R0 - 1;<br>			    R1 &lt- R1 + 1;			<dt><b>SKPC</b>			<dt>while { R0 &gt 0 AND (R1) EQU char}			<dd>R0 &lt- R0 - 1;<br>			    R1 &lt- R1 + 1;		</td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- 0;<br>			Z &lt- R0 EQL 0;<br>			V &lt- 0;<br>			C &lt- 0;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>None</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>3A</td><td>LOCC</td><td>Locate Character</td>			<tr> <td>3B</td><td>SKPC</td><td>Skip Character</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>The character operand is compared with the bytes of the string specified by the length operand and the address operand. Comparison continues until equality is detected for the LOCC instruction or inequality for the SKPC instruction or until all bytes of the string have been compared. If equality is detected for the LOCC instruction, the condition code Z is cleared, otherwise it is set. If inequality is detected for the SKPC instruction, the condition code Z is cleared, otherwise it is set.		</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl><dt>After execution:		<dd> R0 = number of bytes remaining in the string (including the located one if it was located). otherwise R0 &lt- 0.<br>R1 = address of the byte located, if located; otherwise R1 = address of one byte beyond the end of the string.		</dl></td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>LOCC and SKP Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>LOCC and SKPC Instructions</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td valign=top><b>Purpose:</b></td><td>To find a character or skip characters in a character string</td>
+
+<tr>	<td valign=top><b>Format:</b></td><td>opcode char.rb, len.rw, addr.ab</td>
+
+<tr>	<td valign=top><b>Operation:</b></td><td>
+			<dl>
+			<dt>R0 &lt- len;
+			<dt>R1 &lt- addr;
+			<dt><b>LOCC</b>
+			<dt>while { R0 &gt 0 AND (R1) NEQ char}
+			<dd>R0 &lt- R0 - 1;<br>
+			    R1 &lt- R1 + 1;
+			<dt><b>SKPC</b>
+			<dt>while { R0 &gt 0 AND (R1) EQU char}
+			<dd>R0 &lt- R0 - 1;<br>
+			    R1 &lt- R1 + 1;
+		</td>
+
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- 0;<br>
+			Z &lt- R0 EQL 0;<br>
+			V &lt- 0;<br>
+			C &lt- 0;</td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>None</td>
+
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>3A</td><td>LOCC</td><td>Locate Character</td>
+			<tr> <td>3B</td><td>SKPC</td><td>Skip Character</td>
+			</table>
+		</td>
+
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>The character operand is compared with the bytes of the string specified by the length operand and the address operand. Comparison continues until equality is detected for the LOCC instruction or inequality for the SKPC instruction or until all bytes of the string have been compared. If equality is detected for the LOCC instruction, the condition code Z is cleared, otherwise it is set. If inequality is detected for the SKPC instruction, the condition code Z is cleared, otherwise it is set.
+		</td>
+
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl><dt>After execution:
+		<dd> R0 = number of bytes remaining in the string (including the located one if it was located). otherwise R0 &lt- 0.<br>
+R1 = address of the byte located, if located; otherwise R1 = address of one byte beyond the end of the string.
+		</dl></td>
+</table>
+
+</BODY>
+
+</HTML>

@@ -1,1 +1,56 @@
-<HTML><HEAD><TITLE>MACVAX XFC Calls Introduction</TITLE></HEAD><BODY><!-- --------------------------------------------------------- --><A NAME="xfc_INTRODUCTION"></A><IMG ALIGN=left SRC="../pics/MacVAX-Icon.GIF">	<center><h1>MacVAX XFC (system) Calls</h1></center><br><p><hr><!-- --------------------------------------------------------- --><h2>Introduction</h2><ul><p>The MacVAX simulator provides a collection of built-in &quotsystem&quot calls using the extended function call (<b>xfc</b>) instruction. The original intent was to provide an easy method for performing tasks normally performed by an operating system, or provided as library calls, without the need to provide an OS running on the simulator. This was later extented to allow an OS running on MacVAX, to interact with the simulator environment.<p>The current version of the simulator does run a VAX OS which uses the <b>chmk</b> instruction to provide system calls which replace many of these <b>xfc</b> calls. The earlier <b>xfc</b> calls have been retained for use by introductory courses which do not want to have the complications introduced by an OS.<p>The general format of an <B>xfc</B> call is: <listing><font size = 3>	<B>xfc</B>	n</listing></font>where <B>n</B> is a byte representing the <B>xfc</B> call number.  Arguments are passed to and returned from  <B>xfc</B> calls in registers.<p><h3>Example:</h3><ul>To read one character from the keyboard, we use <B>xfc</B> call number 0, and the character read gets returned in r0.<listing><font size = 3>	<B>xfc</B>	#0; Read one character (returned in r0)</listing></font>Alternatively we could use another register for the <B>xfc</B> call number.<listing>	<B>movl</B>	#0, r2	<B>xfc</B>	r2		; Read one character (returned in r0) </listing></font>The <B>xfc</B> calls can be refered to by name if <b>xfc.h</b> is included:<listing><font size = 3>	<b>.include</b> &quotxfc.h&quot	<B>xfc</B>	#READCHAR ; Read one character (returned in r0) </listing></font><p>Nb. The assembler recognises <b>sys</b> as a subtituted for <b>xfc</b>, but the simulator will always display these as an <b>xfc</b>. </ul><p>Passing an <b>xfc</b> call an invalid argument will result in an <b>reserved operand fault</b>.</ul><p><!-- --------------------------------------------------------- --></BODY></HTML>
+<HTML>
+
+<HEAD>
+<TITLE>MACVAX XFC Calls Introduction
+</TITLE>
+</HEAD>
+
+<BODY>
+<!-- --------------------------------------------------------- -->
+<A NAME="xfc_INTRODUCTION"></A>
+<IMG ALIGN=left SRC="../pics/MacVAX-Icon.GIF">	
+
+<center><h1>MacVAX XFC (system) Calls</h1></center><br>
+
+<p>
+
+<hr><!-- --------------------------------------------------------- -->
+
+<h2>Introduction</h2>
+
+<ul>
+<p>The MacVAX simulator provides a collection of built-in &quotsystem&quot calls using the extended function call (<b>xfc</b>) instruction. The original intent was to provide an easy method for performing tasks normally performed by an operating system, or provided as library calls, without the need to provide an OS running on the simulator. This was later extented to allow an OS running on MacVAX, to interact with the simulator environment.<p>
+
+The current version of the simulator does run a VAX OS which uses the <b>chmk</b> instruction to provide system calls which replace many of these <b>xfc</b> calls. The earlier <b>xfc</b> calls have been retained for use by introductory courses which do not want to have the complications introduced by an OS.<p>
+
+The general format of an <B>xfc</B> call is: <listing><font size = 3>
+	<B>xfc</B>	n
+</listing></font>
+where <B>n</B> is a byte representing the <B>xfc</B> call number.  Arguments are passed to and returned from  <B>xfc</B> calls in registers.<p>
+
+<h3>Example:</h3>
+<ul>
+To read one character from the keyboard, we use <B>xfc</B> call number 0, and
+ the character read gets returned in r0.
+<listing><font size = 3>
+	<B>xfc</B>	#0; Read one character (returned in r0)
+</listing></font>
+Alternatively we could use another register for the <B>xfc</B> call number.
+<listing>
+	<B>movl</B>	#0, r2
+	<B>xfc</B>	r2		; Read one character (returned in r0) 
+</listing></font>
+The <B>xfc</B> calls can be refered to by name if <b>xfc.h</b> is included:
+<listing><font size = 3>
+	<b>.include</b> &quotxfc.h&quot
+	<B>xfc</B>	#READCHAR ; Read one character (returned in r0) 
+</listing></font>
+<p>
+Nb. The assembler recognises <b>sys</b> as a subtituted for <b>xfc</b>, but the simulator will always display these as an <b>xfc</b>. 
+</ul>
+<p>Passing an <b>xfc</b> call an invalid argument will result in an <b>reserved operand fault</b>.
+</ul>
+<p>
+<!-- --------------------------------------------------------- -->
+</BODY>
+</HTML>

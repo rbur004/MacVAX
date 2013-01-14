@@ -1,1 +1,97 @@
-<HTML><HEAD><TITLE>INDEXED ADDRESSING MODES</TITLE></HEAD><BODY><IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	<center><h1>VAX Indexed Addressing Modes</h1></center><br><p><hr><!-- --------------------------------------------------------- --><TABLE border=0 align="left" valign="top" cellpadding=5><TR><td><h2>Assembler</h2></td><td><h2>Comment</h2></td><TR><td>#&ltexpr&gt[<B>R</B>x]</td><td>The operand is at the address (<B>R</B>x * operand size) + <B>PC</B>. <br> (Assembles to (<B>PC</B>)+[<B>R</B>x]. This is <B>NOT</B> a useful mode)</td><TR><td>&ltexpr&gt[<B>R</B>x]</td><td>The operand is at the address (<B>R</B>x * operand size)+&ltexpr&gt.<br> (PC relative.  Assembles to &ltexpr&gt - current_location (<B>PC</B>) [<B>R</B>x] ).</td><TR><td>@#&ltexpr&gt[<B>R</B>x]</td><td>The operand is at the address (<B>R</B>x * operand size)+&ltexpr&gt.<br>  (This has the same effect as &ltexpr&gt[<B>R</B>x] but assembles to @(<B>PC</B>)+[<B>R</B>x]).</td><TR><td>@&ltexpr&gt[<B>R</B>x]</td><td>The operand is at the address (<B>R</B>x * operand size) + the value (long) at the address &ltexpr&gt .<br>(Compiles to @&ltexpr&gt - current_location(<B>PC</B>)[<B>R</B>x] ).</td><TR><td>(<B>R</B>n)[<B>R</B>x]</td><td>The operand is at the address (<B>R</B>x * operand size) + <B>R</B>n</td><TR><td>-(<B>R</B>n)[<B>R</B>x]</td><td>The value of <B>R</B>n is decremented by the size of the operand type before adding it to (<B>R</B>x * operand size) to obtain the address of the operand.</td><TR><td>(<B>R</B>n)+[<B>R</B>x]</td><td>The value of <B>R</B>n is incremented by the size of the operand type after adding it to (<B>R</B>x * operand size) to obtain the address of the operand.</td><TR><td>@(<B>R</B>n)+[<B>R</B>x]</td><td>The operands address is obtained by taking the value at the memory address specified by the contents of <B>R</B>n and adding it to (<B>R</B>x * operand size) . The contents of <B>R</B>n are then incremented by <B>4</B>.</td><TR><td>&ltexpr&gt(<B>R</B>n)[<B>R</B>x]</td><td>The address of the operand is obtained by<br>&ltexpr&gt + <B>R</B>n + (<B>R</B>x * operand size) .</td><TR><td>@&ltexpr&gt(<B>R</B>n)[<B>R</B>x]</td><td>The operands address is obtained by taking the value at the  address (&ltexpr&gt + <B>R</B>n) and adding it to (<B>R</B>x * operand size) .</td><TR><td><A HREF="address-mode.html"></A></td><td><A HREF="address-mode.html">Previous Page</A></td></table><h3>Notes</h3><ul>		 <p>	<li>&ltexpr&gt is an expression as described (see XXX).<br>	<li>An &ltexpr&gt is evaluated at assembly time. <br>	<li><B>R</B>n and <B>R</B>x are any registers and may be the same register (be 	careful if they you do this).<br>	<li>The assembler recognises the UNIX;<br>	<ul>		&quot<B>*</B>&quot as equivalent to the VMS &quot<B>@</B>&quot;<br>		&quot<B>$</B>&quot as equivalent to the VMS &quot<B>#</B>&quot,<br>	</ul>	But MacVAX will always display these in the VMS form used above.</ul></BODY></HTML>
+<HTML>
+
+<HEAD>
+<TITLE>INDEXED ADDRESSING MODES
+</TITLE>
+</HEAD>
+
+<BODY>
+
+<IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	
+<center><h1>VAX Indexed Addressing Modes</h1></center><br>
+<p>
+<hr><!-- --------------------------------------------------------- -->
+
+<TABLE border=1 align="left" valign="top" cellpadding=5>
+<TR>
+<td><h2>Assembler</h2></td>
+<td><h2>Comment</h2></td>
+
+<TR>
+<td>#&ltexpr&gt[<B>R</B>x]</td>
+<td>The operand is at the address (<B>R</B>x * operand size) + <B>PC</B>. <br> 
+(Assembles to (<B>PC</B>)+[<B>R</B>x]. This is <B>NOT</B> a useful mode)</td>
+
+<TR>
+<td>&ltexpr&gt[<B>R</B>x]</td>
+<td>The operand is at the address (<B>R</B>x * operand size)+&ltexpr&gt.<br>
+ (PC relative.  Assembles to &ltexpr&gt - current_location (<B>PC</B>) [<B>R</B>x] ).</td>
+
+<TR>
+<td>@#&ltexpr&gt[<B>R</B>x]</td>
+<td>The operand is at the address (<B>R</B>x * operand size)+&ltexpr&gt.<br>  
+(This has the same effect as &ltexpr&gt[<B>R</B>x] but assembles to 
+@(<B>PC</B>)+[<B>R</B>x]).</td>
+
+<TR>
+<td>@&ltexpr&gt[<B>R</B>x]</td>
+<td>The operand is at the address (<B>R</B>x * operand size) + the value 
+(long) at the address &ltexpr&gt .<br>
+(Compiles to @&ltexpr&gt - current_location(<B>PC</B>)[<B>R</B>x] ).</td>
+
+<TR>
+<td>(<B>R</B>n)[<B>R</B>x]</td>
+<td>The operand is at the address (<B>R</B>x * operand size) + <B>R</B>n</td>
+
+<TR>
+<td>-(<B>R</B>n)[<B>R</B>x]</td>
+<td>The value of <B>R</B>n is decremented by the size of the operand 
+type before adding it to (<B>R</B>x * operand size) to obtain the 
+address of the operand.</td>
+
+<TR>
+<td>(<B>R</B>n)+[<B>R</B>x]</td>
+<td>The value of <B>R</B>n is incremented by the size of the operand 
+type after adding it to (<B>R</B>x * operand size) to obtain the address 
+of the operand.</td>
+
+<TR>
+<td>@(<B>R</B>n)+[<B>R</B>x]</td>
+<td>The operands address is obtained by taking the value at the 
+memory address specified by the contents of <B>R</B>n and adding it 
+to (<B>R</B>x * operand size) . The contents of <B>R</B>n are then 
+incremented by <B>4</B>.</td>
+
+<TR>
+<td>&ltexpr&gt(<B>R</B>n)[<B>R</B>x]</td>
+<td>The address of the operand is obtained by<br>
+&ltexpr&gt + <B>R</B>n + (<B>R</B>x * operand size) .</td>
+
+<TR>
+<td>@&ltexpr&gt(<B>R</B>n)[<B>R</B>x]</td>
+<td>The operands address is obtained by taking the value at the  
+address (&ltexpr&gt + <B>R</B>n) and adding it to (<B>R</B>x * operand size) .</td>
+
+<TR>
+<td><A HREF="address-mode.html"></A></td>
+<td><A HREF="address-mode.html">Previous Page</A></td>
+</table>
+
+<h3>Notes</h3>
+<ul>		 
+<p>
+	<li>&ltexpr&gt is an expression as described (see XXX).<br>
+	<li>An &ltexpr&gt is evaluated at assembly time. <br>
+	<li><B>R</B>n and <B>R</B>x are any registers and may be the same register (be 	careful if they you do this).<br>
+	<li>The assembler recognises the UNIX;<br>
+	<ul>
+		&quot<B>*</B>&quot as equivalent to the VMS &quot<B>@</B>&quot;<br>
+		&quot<B>$</B>&quot as equivalent to the VMS &quot<B>#</B>&quot,<br>
+	</ul>
+	But MacVAX will always display these in the VMS form used above.
+</ul>
+
+
+</BODY>
+
+</HTML>

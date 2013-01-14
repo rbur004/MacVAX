@@ -1,1 +1,72 @@
-<html><head><title>Internal Processor Registers</title></head><body><IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	<center><h1>VAX Internal Processor Registers<br>Interrupt Handling</h1></center><br><p>These registers are accessed using the <b>mtpr</b> and <b>mfpr</b> instructions.<p><hr><!-- -------------------------------------------------------------- --><dl compact><A NAME="IPL_11"></A>	<dt><b>SCBB 			<dd>0x11</b> System Control Block Base	(Read / Write)<p>	<IMG ALIGN=bottom SRC="pics/IPR-SBR.GIF">   <p>                                                             	<b>SCBB</b> holds the Physical address of  the System Control Block 	The address must be long 	aligned (the low 2 bits must be 00) . 	The System Control Block is a page of vectors for 	aborts, faults, traps, and interrupts.<p>	<A NAME="IPL_12"></A>	<dt><b>IPLR			<dd>0x12</b> Interrupt Priority Level Register	(Read / Write)<p>	<IMG ALIGN=bottom SRC="pics/IPR-IPLR.GIF">   <p> 		                                                            	The <b>IPLR</b> accesses <b>bits 20</b> to <b>16</b> of the <b>PS</b>.	<p>	<A NAME="IPL_13"></A>	<dt><b>ASTR			<dd>0x13</b> Async Trap level (Read/Write)<p>	<IMG ALIGN=bottom SRC="pics/IPR-ASTR.GIF">   <p> 	 	The <b>ASTR</b> holds the value of the most privileged access mode for which an 	<B>AST</B> is 	pending. Only bits 0 to 2 are used. The top bits are ignored on a 	write and returned 	as 0 on a read. ASTÕs are serviced on a <B>rei</B>	 instruction. 	The register is initialised 	at boot time to 0x4 (ie No AST pending).<p><A NAME="IPL_14"></A>	<dt><b>SIRR			<dd>0x14</b> Software Interrupt Request Register (Write Only)<p>	<IMG ALIGN=bottom SRC="pics/IPR-SIRR.GIF">   <p> 			                                                            	The <b>SIRR</b> is write only. A <listing><b>mtpr</b> src , 	#<b>SIRR</b></listing> instruction 	requests an software interrupt at 	<b>IPL</b> src. Pending interrupts are summarized in the <b>SISR</b>.<p>	<A NAME="IPL_15"></A>	<dt><b>SISR			<dd>0x15</b> Software Interrupt Summary Register	(Read / Write)<p>	<IMG ALIGN=bottom SRC="pics/IPR-SISR.GIF">   <p> 		                                                            	The <b>SISR</b> holds a summary of the pending software interrupts. 	The register is cleared at 	boot time and may be cleared by software using a 	<listing><b>mtpr</b> #0, 	#<b>SISR</b></listing>	This is normally considered a read only register. Software interrupts should be 	requested using the <b>SIRR</b> register not by setting bits in the  <b>SISR</b>	register directly.<p>	</dl></body></html>
+<html>
+<head>
+<title>Internal Processor Registers</title>
+</head>
+
+<body>
+
+<IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	
+
+<center><h1>VAX Internal Processor Registers<br>
+Interrupt Handling</h1></center><br>
+
+<p>These registers are accessed using the <b>mtpr</b> and <b>mfpr</b> instructions.<p>
+
+<hr><!-- -------------------------------------------------------------- -->
+<dl compact>
+<A NAME="IPL_11"></A>
+	<dt><b>SCBB 		
+	<dd>0x11</b> System Control Block Base	(Read / Write)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-SBR.GIF">   <p> 
+                                                            
+	<b>SCBB</b> holds the Physical address of  the System Control Block 
+	The address must be long 
+	aligned (the low 2 bits must be 00) . 
+	The System Control Block is a page of vectors for 
+	aborts, faults, traps, and interrupts.<p>
+	
+<A NAME="IPL_12"></A>
+	<dt><b>IPLR		
+	<dd>0x12</b> Interrupt Priority Level Register	(Read / Write)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-IPLR.GIF">   <p> 	
+	                                                            
+	The <b>IPLR</b> accesses <b>bits 20</b> to <b>16</b> of the <b>PS</b>.
+	<p>
+	
+<A NAME="IPL_13"></A>
+	<dt><b>ASTR		
+	<dd>0x13</b> Async Trap level (Read/Write)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-ASTR.GIF">   <p> 	
+ 
+	The <b>ASTR</b> holds the value of the most privileged access mode for which an 
+	<B>AST</B> is 	pending. Only bits 0 to 2 are used. The top bits are ignored on a 
+	write and returned 	as 0 on a read. ASTÕs are serviced on a <B>rei</B>
+	 instruction. 
+	The register is initialised 	at boot time to 0x4 (ie No AST pending).<p>
+
+<A NAME="IPL_14"></A>
+	<dt><b>SIRR		
+	<dd>0x14</b> Software Interrupt Request Register (Write Only)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-SIRR.GIF">   <p> 	
+		                                                            
+	The <b>SIRR</b> is write only. A <listing><b>mtpr</b> src , 	#<b>SIRR</b></listing> instruction 
+	requests an software interrupt at 
+	<b>IPL</b> src. Pending interrupts are summarized in the <b>SISR</b>.<p>
+	
+<A NAME="IPL_15"></A>
+	<dt><b>SISR		
+	<dd>0x15</b> Software Interrupt Summary Register	(Read / Write)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-SISR.GIF">   <p> 	
+	                                                            
+	The <b>SISR</b> holds a summary of the pending software interrupts. 
+	The register is cleared at 
+	boot time and may be cleared by software using a 
+	<listing><b>mtpr</b> #0, 	#<b>SISR</b></listing>
+	This is normally considered a read only register. Software interrupts should be 
+	requested using the <b>SIRR</b> register not by setting bits in the  <b>SISR</b>
+	register directly.<p>
+	
+</dl>
+
+</body>
+</html>

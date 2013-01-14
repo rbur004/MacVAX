@@ -1,1 +1,45 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>ASH Instruction</TITLE></HEAD><BODY><H2>ASH Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td><b>Purpose:</b></td><td>To perform arithmetic bit shifts on Integers</td><tr>	<td><b>Format:</b></td><td>opcode cnt.rb, src.rx, dst.wx</td><tr>	<td><b>Operation:</b></td><td>dst &lt- src shifted cnt bits;</td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- dst LSS 0;<br>			Z &lt- dst EQL 0;<br>			V &lt- Integer Overflow;<br>			C &lt- 0;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Overflow</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>78</td><td>ASHL</td><td>Arithmetic shift Long</td>			<tr> <td>79</td><td>ASHQ</td><td>Arithmetic shift Quad</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>The source operand is arithmetically shifted by the number of bits specified by the count operand. The destination is replaced by the result. The source and count operands are unaffected.<p>A positive count shifts to the left, bringing in 0's into the least significant bit.<p>A negative count shifts right, bringing in copies of the original sign bit into the most significant bit.<p>A 0 count copies the source to the destination. ie <b>ASH</b>x #0, <B>R0</B>, <B>R2</B> becomes <b>MOVx</b> <B>R0</B>, <B>R2</B></td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>Integer overflow occurs on a left shift if any bits shifted into the sign bit differs from the sign bit of the source operand. On overflow, the destination operand is replaced by the low order bits of the true result.		<dt>2.<dd>If the count operand is less than -31 (ASHL) or -63 (ASHQ); all the bits of the destination operand are copies of the sign bit of the source operand.		<dt>3.<dd>If the count operand is greater than 32 (ASHL) or 64 (ASHQ); the destination operand is replaced by 0.</td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>ASH Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>ASH Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td><b>Purpose:</b></td><td>To perform arithmetic bit shifts on Integers</td>
+<tr>	<td><b>Format:</b></td><td>opcode cnt.rb, src.rx, dst.wx</td>
+<tr>	<td><b>Operation:</b></td><td>dst &lt- src shifted cnt bits;</td>
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- dst LSS 0;<br>
+			Z &lt- dst EQL 0;<br>
+			V &lt- Integer Overflow;<br>
+			C &lt- 0;</td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Overflow</td>
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>78</td><td>ASHL</td><td>Arithmetic shift Long</td>
+			<tr> <td>79</td><td>ASHQ</td><td>Arithmetic shift Quad</td>
+			</table>
+		</td>
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>The source operand is arithmetically shifted by the number of bits specified by the count operand. The destination is replaced by the result. The source and count operands are unaffected.<p>
+A positive count shifts to the left, bringing in 0's into the least significant bit.<p>
+A negative count shifts right, bringing in copies of the original sign bit into the most significant bit.<p>
+A 0 count copies the source to the destination. ie <b>ASH</b>x #0, <B>R0</B>, <B>R2</B> becomes <b>MOVx</b> <B>R0</B>, <B>R2</B></td>
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>Integer overflow occurs on a left shift if any bits shifted into the sign bit differs from the sign bit of the source operand. On overflow, the destination operand is replaced by the low order bits of the true result.
+		<dt>2.<dd>If the count operand is less than -31 (ASHL) or -63 (ASHQ); all the bits of the destination operand are copies of the sign bit of the source operand.
+		<dt>3.<dd>If the count operand is greater than 32 (ASHL) or 64 (ASHQ); the destination operand is replaced by 0.</td>
+</table>
+
+</BODY>
+
+</HTML>

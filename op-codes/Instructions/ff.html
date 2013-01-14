@@ -1,1 +1,66 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>FF Instructions</TITLE></HEAD><BODY><H2>FF Instructions</h2><table border=0 valign=top cellpadding=5><tr>	<td valign=top><b>Purpose:</b></td><td>To locate the first bit in a bit field</td><tr>	<td valign=top><b>Format:</b></td><td>opcode startpos.rl, size.rb, base.vb, findpos.wl</td><tr>	<td valign=top><b>Operation:</b></td><td>		<dl>		<dt>{extract field};		<dt>{search for bit set or clear from bit 0 to bit (size - 1)};		<dt>if { found }			<dd>findpos &lt- {startpos + bit position};			<dd>Z &lt- 0;		<dt>else			<dd>findpos &lt- startpos + size;			<dd>Z &lt- 1;		</dl></td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- 0;<br>			Z &lt- bit not found;<br>			V &lt- 0;<br>			C &lt- 0;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>							Reserved Operand</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>EB</td><td>FFC</td><td>Find First Clear</td>			<tr> <td>EA</td><td>FFS</td><td>Find First Set</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>A field specified by the start position, size and base operands is extracted. The field is tested for a bit in the state indicated by the instruction starting at bit 0 and extending to the highest bit in the field. If a bit in the indicated state is found, the find position operand is replaced by the position of the bit and the Z condition code is cleared. <p>If a bit in the indicated state is not found, the find position operand is replaced by the position (relative to the base) of the bit one bit higher than the highest bit in the field and the Z condition code is set.<p>If the size operand is zero, the find position operand is set to the start position operand and the Z condition code is set. </td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>If the start position + size is GEQU 2**31, then find position might be set to a negative value that would not be usable in a subsequent field or BBxx instruction.		<dt>2.<dd>A reserved operand fault occurs if the unsigned size operand is greater than 32 or the bit field is contained in a register and the position operand is outside the range 0 - 31.		<dt>3.<dd>On a reserved operand fault, the destination is unaffected and the condition codes are unpredictable.		<dt>4.<dd>If the base address is a register, the bit field may extend into the next register.		<dt>5.<dd>The startpos operand may be negative.</td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>FF Instructions
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>FF Instructions</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td valign=top><b>Purpose:</b></td><td>To locate the first bit in a bit field</td>
+
+<tr>	<td valign=top><b>Format:</b></td><td>opcode startpos.rl, size.rb, base.vb, findpos.wl</td>
+
+<tr>	<td valign=top><b>Operation:</b></td><td>
+		<dl>
+		<dt>{extract field};
+		<dt>{search for bit set or clear from bit 0 to bit (size - 1)};
+		<dt>if { found }
+			<dd>findpos &lt- {startpos + bit position};
+			<dd>Z &lt- 0;
+		<dt>else
+			<dd>findpos &lt- startpos + size;
+			<dd>Z &lt- 1;
+		</dl></td>
+
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- 0;<br>
+			Z &lt- bit not found;<br>
+			V &lt- 0;<br>
+			C &lt- 0;</td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>
+							Reserved Operand</td>
+
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>EB</td><td>FFC</td><td>Find First Clear</td>
+			<tr> <td>EA</td><td>FFS</td><td>Find First Set</td>
+			</table>
+		</td>
+
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>A field specified by the start position, size and base operands is extracted. The field is tested for a bit in the state indicated by the instruction starting at bit 0 and extending to the highest bit in the field. If a bit in the indicated state is found, the find position operand is replaced by the position of the bit and the Z condition code is cleared. 
+<p>
+If a bit in the indicated state is not found, the find position operand is replaced by the position (relative to the base) of the bit one bit higher than the highest bit in the field and the Z condition code is set.
+<p>
+If the size operand is zero, the find position operand is set to the start position operand and the Z condition code is set.
+ </td>
+
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>If the start position + size is GEQU 2**31, then find position might be set to a negative value that would not be usable in a subsequent field or BBxx instruction.
+		<dt>2.<dd>A reserved operand fault occurs if the unsigned size operand is greater than 32 or the bit field is contained in a register and the position operand is outside the range 0 - 31.
+		<dt>3.<dd>On a reserved operand fault, the destination is unaffected and the condition codes are unpredictable.
+		<dt>4.<dd>If the base address is a register, the bit field may extend into the next register.
+		<dt>5.<dd>The startpos operand may be negative.</td>
+</table>
+
+</BODY>
+
+</HTML>

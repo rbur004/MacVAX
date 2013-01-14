@@ -1,1 +1,45 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>EMOD Instruction</TITLE></HEAD><BODY><H2>EMOD Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td><b>Purpose:</b></td><td>To perform accurate range of math function arguments</td><tr>	<td><b>Format:</b></td><td>opcode mulr.rx, mulrx.rb, muld.rx, int.wl fract.wx</td><tr>	<td valign=top><b>Operation:</b></td><td>int &lt- integer part of muld * (mulr,mulrx);<br>frac &lt- fractional part of muld * (mulr,mulrx);</td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- fract LSS 0;<br>			Z &lt- fract EQL 0;<br>			V &lt- {Integer Overflow}<br>			C &lt- 0;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Overflow;<br>							Floating underflow;<br>							Reserved Operand (Floating Point)</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>54</td><td>EMODF</td><td>Extended multiply and integerize Float</td>			<tr> <td>74</td><td>EMODD</td><td>Extended multiply and integerize Double</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>The floating point multiplier extension operand (mulrx) is concatenated with the floating point multiplier (mulr) to gain 8 additional low order fraction bits. The multiplicand operand (muld) is multiplied by the extended multiplier. After multiplication, the integer portion is extracted and a 32 bit (EMODF) or 64 bit (EMODD) floating point number is formed from the fractional part of the product, by trucating extra bits. The multiplication is such that the result is equivalent to the exact product truncated to a fraction field of 32 bits (float) or 64 bits (double). Regarding the result as the sum of an integer and fraction of the same sign, the integer operand is replaced by the integer part of the result and the fraction by is replaced by the rounded fractional part of the result. The source operands, mulr, mulrx and muld are unaffected.</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>On a floating reserved operand fault, the integer and fraction operands are unaffected and the condition codes are unpredictable.		<dt>2.<dd>On floating underflow, the integer and fraction operands are replaced with by 0.		<dt>3.<dd>On integer overflow, the integer operand is replaced by the low order bits of the true result.		<dt>4.<dd>Floating overflow is indicated by integer overflow; however, integer overflow is possible in the absence of floating overflow.		</DL></td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>EMOD Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>EMOD Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td><b>Purpose:</b></td><td>To perform accurate range of math function arguments</td>
+<tr>	<td><b>Format:</b></td><td>opcode mulr.rx, mulrx.rb, muld.rx, int.wl fract.wx</td>
+<tr>	<td valign=top><b>Operation:</b></td><td>int &lt- integer part of muld * (mulr,mulrx);<br>frac &lt- fractional part of muld * (mulr,mulrx);</td>
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- fract LSS 0;<br>
+			Z &lt- fract EQL 0;<br>
+			V &lt- {Integer Overflow}<br>
+			C &lt- 0;</td>
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Overflow;<br>
+							Floating underflow;<br>
+							Reserved Operand (Floating Point)</td>
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>54</td><td>EMODF</td><td>Extended multiply and integerize Float</td>
+			<tr> <td>74</td><td>EMODD</td><td>Extended multiply and integerize Double</td>
+			</table>
+		</td>
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>The floating point multiplier extension operand (mulrx) is concatenated with the floating point multiplier (mulr) to gain 8 additional low order fraction bits. The multiplicand operand (muld) is multiplied by the extended multiplier. After multiplication, the integer portion is extracted and a 32 bit (EMODF) or 64 bit (EMODD) floating point number is formed from the fractional part of the product, by trucating extra bits. The multiplication is such that the result is equivalent to the exact product truncated to a fraction field of 32 bits (float) or 64 bits (double). Regarding the result as the sum of an integer and fraction of the same sign, the integer operand is replaced by the integer part of the result and the fraction by is replaced by the rounded fractional part of the result. The source operands, mulr, mulrx and muld are unaffected.</td>
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>On a floating reserved operand fault, the integer and fraction operands are unaffected and the condition codes are unpredictable.
+		<dt>2.<dd>On floating underflow, the integer and fraction operands are replaced with by 0.
+		<dt>3.<dd>On integer overflow, the integer operand is replaced by the low order bits of the true result.
+		<dt>4.<dd>Floating overflow is indicated by integer overflow; however, integer overflow is possible in the absence of floating overflow.
+		</DL></td>
+</table>
+
+</BODY>
+
+</HTML>

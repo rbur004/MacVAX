@@ -1,1 +1,122 @@
-<HTML><HEAD><TITLE></TITLE></HEAD><BODY><IMG ALIGN=left SRC="../pics/AS-Icon.GIF">	<center><h1>Assembler Guide</h1></center><br><p><hr><!-- --------------------------------------------------------- --><A NAME="AS_CONSTANTS"></A><h2>Constants</h2><ul>	<h3>Decimal Constant</h3>	<ul>			A decimal constant is a sequence of digits without a leading zero,		<br><ul>e.g. 42</ul>		The constant will be stored in the smallest size integer data type that can		hold it without lose of data. 	</ul>	<p>	<H3>Octal Constant</h3>	<ul>		An octal constant is a sequence of digits with a leading zero,		<br><ul>e.g. 052</ul>		The constant will be stored in the smallest size integer data type that can		hold it without lose of data. 	</ul>	<p>	<h3>Hex Constant</h3>	<ul>		A hex constant is a sequence of digits with a leading &quot0x&quot,<br>		<ul>e.g. 0x2A</ul>		The constant will be stored in the smallest size integer data type that can		hold it without lose of data. 	</ul>	<p>	<h3>Identifier Constant</h3>	<ul>		An identifier constant is a label, e.g.		<listing>			Start: <B>movl</B> <B>R0</B>, <B>R1</B>		</listing>		 or an equate, e.g. 		 <listing>			.<B>set</B> IPR_ISP	4		 </listing>		A labels value is the address of the label. <br>		An equate's value is the value of the equate.	</ul>	<p>	<h3>Character Constant</h3>	<ul>			A character constant is a single quot followed by a character, e.g. 		<listing>			<B>movl</B> 'A, <B>R0</B>		</listing>	</ul>	<p>	<h3>String Constant</h3>	<ul>			A string constant is a sequence of character enclosed in double quotes, 		<ul>eg.	&quotThis is a String&quot</ul>		The C language '\' escape codes are recognised. <br>		eg.		<ul>			\t translates to tab<br>			\n translates to a new line<br>			\r translates to a CR<br>			\\ translates to a \<br>			...		</ul>		Strings are not null terminated and have no leading length byte.	</ul>	<p>	<h3>Floating Point Constant</h3>	<ul>		A float point constant (F format) is a number of the form 0f켷.ne켷,<br>		<ul>			eg.   0f5.723e-23		</ul>	</ul>	<p>	<h3>D Format Floating Point Constant&gt</h3>	<ul>		A D format float point constant is a number of the form 0d켷.nd켷,<br>		<ul>			eg.   0d5.723d-23		</ul>		This type is recognised by the assembler, but is <B>Not</B> supported 		by the MacVAX simulator	</ul>	<p>	<h3>G Format Floating Point Constant</h3>	<ul>		A G format float point constant is a number of the form 0g켷.ng켷,<br>		<ul>			eg.   0g5.723g-23		</ul>		This type is recognised by the assembler, but is <B>Not</B> supported 		by the MacVAX simulator	</ul>	<p>	<h3>H Format Floating Point Constant</h3>	<ul>		A H format float point constant is a number of the form 0h켷.nh켷,<br>		<ul>			eg.   0h5.723h-23		</ul>		This type is recognised by the assembler, but is <B>Not</B> supported 		by the MacVAX simulator	</table></ul></BODY></HTML>
+<HTML>
+
+<HEAD>
+<TITLE>
+</TITLE>
+</HEAD>
+
+<BODY>
+
+<IMG ALIGN=left SRC="../pics/AS-Icon.GIF">	
+
+<center><h1>Assembler Guide</h1></center><br>
+
+<p>
+
+<hr><!-- --------------------------------------------------------- -->
+<A NAME="AS_CONSTANTS"></A>
+<h2>Constants</h2>
+<ul>
+	<h3>Decimal Constant</h3>
+	<ul>	
+		A decimal constant is a sequence of digits without a leading zero,
+		<br><ul>e.g. 42</ul>
+		The constant will be stored in the smallest size integer data type that can
+		hold it without lose of data. 
+	</ul>
+	<p>
+	<H3>Octal Constant</h3>
+	<ul>
+		An octal constant is a sequence of digits with a leading zero,
+		<br><ul>e.g. 052</ul>
+		The constant will be stored in the smallest size integer data type that can
+		hold it without lose of data. 
+	</ul>
+	<p>
+	<h3>Hex Constant</h3>
+	<ul>
+		A hex constant is a sequence of digits with a leading &quot0x&quot,<br>
+		<ul>e.g. 0x2A</ul>
+		The constant will be stored in the smallest size integer data type that can
+		hold it without lose of data. 
+	</ul>
+	<p>
+	<h3>Identifier Constant</h3>
+	<ul>
+		An identifier constant is a label, e.g.
+		<listing>
+			Start: <B>movl</B> <B>R0</B>, <B>R1</B>
+		</listing>
+		 or an equate, e.g. 
+		 <listing>
+			.<B>set</B> IPR_ISP	4
+		 </listing>
+		A labels value is the address of the label. <br>
+		An equate's value is the value of the equate.
+	</ul>
+	<p>
+	<h3>Character Constant</h3>
+	<ul>	
+		A character constant is a single quot followed by a character, e.g. 
+		<listing>
+			<B>movl</B> 'A, <B>R0</B>
+		</listing>
+	</ul>
+	<p>
+	<h3>String Constant</h3>
+	<ul>	
+		A string constant is a sequence of character enclosed in double quotes, 
+		<ul>eg.	&quotThis is a String&quot</ul>
+		The C language '\' escape codes are recognised. <br>
+		eg.
+		<ul>
+			\t translates to tab<br>
+			\n translates to a new line<br>
+			\r translates to a CR<br>
+			\\ translates to a \<br>
+			...
+		</ul>
+		Strings are not null terminated and have no leading length byte.
+	</ul>
+	<p>
+	<h3>Floating Point Constant</h3>
+	<ul>
+		A float point constant (F format) is a number of the form 0f켷.ne켷,<br>
+		<ul>
+			eg.   0f5.723e-23
+		</ul>
+	</ul>
+	<p>
+	<h3>D Format Floating Point Constant&gt</h3>
+	<ul>
+		A D format float point constant is a number of the form 0d켷.nd켷,<br>
+		<ul>
+			eg.   0d5.723d-23
+		</ul>
+		This type is recognised by the assembler, but is <B>Not</B> supported 
+		by the MacVAX simulator
+	</ul>
+	<p>
+	<h3>G Format Floating Point Constant</h3>
+	<ul>
+		A G format float point constant is a number of the form 0g켷.ng켷,<br>
+		<ul>
+			eg.   0g5.723g-23
+		</ul>
+		This type is recognised by the assembler, but is <B>Not</B> supported 
+		by the MacVAX simulator
+	</ul>
+	<p>
+	<h3>H Format Floating Point Constant</h3>
+	<ul>
+		A H format float point constant is a number of the form 0h켷.nh켷,<br>
+		<ul>
+			eg.   0h5.723h-23
+		</ul>
+		This type is recognised by the assembler, but is <B>Not</B> supported 
+		by the MacVAX simulator
+	</table>
+</ul>
+</BODY>
+
+</HTML>

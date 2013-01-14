@@ -1,1 +1,52 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>BB Instruction</TITLE></HEAD><BODY><H2>BB Instructions</h2><table border=0 valign=top cellpadding=5><tr>	<td valign=top><b>Purpose:</b></td><td>To branch on bit test</td><tr>	<td valign=top><b>Format:</b></td><td>opcode pos.rl, base.ab, displ.bb</td><tr>	<td valign=top><b>Operation:</b></td><td>	<dl>	<dt>teststate = if {BBS} then 1 else 0;	<dt>if FIELD(pos, 1, base) EQL teststate then	<dd>PC &lt- PC + sign-extended displ	</dl></td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- N;<br>			Z &lt- Z;<br>			V &lt- V;<br>			C &lt- C;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>Reserved Operand</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>E0</td><td>BBS</td><td>Branch on bit Set</td>			<tr> <td>E1</td><td>BBC</td><td>Brance on bit Clear</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>The single bit specified by the position and base operands is tested. If it is in the test state indicated by the instruction, the sign-extended branch displacement is added to the <b>PC</b> and the <b>PC</b> is replaced by the result.</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>A reserved operand fault occurs if pos is greater (unsigned) than 31 and the bit is contained in a register.		<dt>2.<dd>On a reserved operand fault, the condition codes are unpredictable.</dl></td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>BB Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>BB Instructions</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td valign=top><b>Purpose:</b></td><td>To branch on bit test</td>
+
+<tr>	<td valign=top><b>Format:</b></td><td>opcode pos.rl, base.ab, displ.bb</td>
+
+<tr>	<td valign=top><b>Operation:</b></td><td>
+	<dl>
+	<dt>teststate = if {BBS} then 1 else 0;
+	<dt>if FIELD(pos, 1, base) EQL teststate then
+	<dd>PC &lt- PC + sign-extended displ
+	</dl></td>
+
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- N;<br>
+			Z &lt- Z;<br>
+			V &lt- V;<br>
+			C &lt- C;</td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Reserved Operand</td>
+
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>E0</td><td>BBS</td><td>Branch on bit Set</td>
+			<tr> <td>E1</td><td>BBC</td><td>Brance on bit Clear</td>
+			</table>
+		</td>
+
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>The single bit specified by the position and base operands is tested. If it is in the test state indicated by the instruction, the sign-extended branch displacement is added to the <b>PC</b> and the <b>PC</b> is replaced by the result.</td>
+
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>A reserved operand fault occurs if pos is greater (unsigned) than 31 and the bit is contained in a register.
+		<dt>2.<dd>On a reserved operand fault, the condition codes are unpredictable.</dl></td>
+</table>
+
+</BODY>
+
+</HTML>

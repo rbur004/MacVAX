@@ -1,1 +1,61 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>BBxxI Instruction</TITLE></HEAD><BODY><H2>BBxxI Instructions</h2><table border=0 valign=top cellpadding=5><tr>	<td valign=top><b>Purpose:</b></td><td>To branch on bit test and modify under memory interlock</td><tr>	<td valign=top><b>Format:</b></td><td>opcode pos.rl, base.ab, displ.bb</td><tr>	<td valign=top><b>Operation:</b></td><td>	<DL>	<dt>teststate = if {BBSSI} then 1 else 0;	<dt>newstate = teststate;	<dt>{set interlock}	<dt>tmp &lt-  FIELD(pos, 1, base)	<dt>FIELD(pos, 1, base) &lt- newstate	<dt>{release interlock}	<dt>if tmp EQL teststate then	<dd>PC &lt- PC + sign-extended displ	</dl>	</td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- N;<br>			Z &lt- Z;<br>			V &lt- V;<br>			C &lt- C;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>Reserved Operand</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>E2</td><td>BBSSI</td><td>Branch on bit Set and Set Interlocked</td>			<tr> <td>E5</td><td>BBCCI</td><td>Brance on bit Clear and Clear Interlocked</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>The single bit specified by the position and base operands is tested. If it is in the test state indicated by the instruction, the sign-extended branch displacement is added to the <b>PC</b> and the <b>PC</b> is replaced by the result. <b>Regardless</b> of the result, the tested bit is put in the new state indicated by the instruction.<p>If the bit is contained in memory, the reading of the state of the bit and the setting of it to the new state is an interlocked operation. No other processor or I/O device can do an interlocked access on the bit during the interlocked operation.</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>A reserved operand fault occurs if pos is greater (unsigned) than 31 and the bit is contained in a register.		<dt>2.<dd>On a reserved operand fault, the condition codes are unpredictable.		<dt>3.<dd>Except for memory interlocking, <b>BBSSI</b> is equivalent to <b>BBSS</b> and <b>BBCCI</b> is equivalent to <b>BBCC</b>.		</dl></td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>BBxxI Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>BBxxI Instructions</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td valign=top><b>Purpose:</b></td><td>To branch on bit test and modify under memory interlock</td>
+
+<tr>	<td valign=top><b>Format:</b></td><td>opcode pos.rl, base.ab, displ.bb</td>
+
+<tr>	<td valign=top><b>Operation:</b></td><td>
+	<DL>
+	<dt>teststate = if {BBSSI} then 1 else 0;
+	<dt>newstate = teststate;
+	<dt>{set interlock}
+	<dt>tmp &lt-  FIELD(pos, 1, base)
+	<dt>FIELD(pos, 1, base) &lt- newstate
+	<dt>{release interlock}
+	<dt>if tmp EQL teststate then
+	<dd>PC &lt- PC + sign-extended displ
+	</dl>
+	</td>
+
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- N;<br>
+			Z &lt- Z;<br>
+			V &lt- V;<br>
+			C &lt- C;</td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Reserved Operand</td>
+
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>E2</td><td>BBSSI</td><td>Branch on bit Set and Set Interlocked</td>
+			<tr> <td>E5</td><td>BBCCI</td><td>Brance on bit Clear and Clear Interlocked</td>
+			</table>
+		</td>
+
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>The single bit specified by the position and base operands is tested. If it is in the test state indicated by the instruction, the sign-extended branch displacement is added to the <b>PC</b> and the <b>PC</b> is replaced by the result. <b>Regardless</b> of the result, the tested bit is put in the new state indicated by the instruction.<p>
+If the bit is contained in memory, the reading of the state of the bit and the setting of it to the new state is an interlocked operation. No other processor or I/O device can do an interlocked access on the bit during the interlocked operation.</td>
+
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>A reserved operand fault occurs if pos is greater (unsigned) than 31 and the bit is contained in a register.
+		<dt>2.<dd>On a reserved operand fault, the condition codes are unpredictable.
+		<dt>3.<dd>Except for memory interlocking, <b>BBSSI</b> is equivalent to <b>BBSS</b> and <b>BBCCI</b> is equivalent to <b>BBCC</b>.
+		</dl></td>
+</table>
+
+</BODY>
+
+</HTML>

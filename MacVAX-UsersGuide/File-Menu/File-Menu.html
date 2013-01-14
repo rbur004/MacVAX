@@ -1,1 +1,38 @@
-<HTML><HEAD><TITLE>File Menu</TITLE></HEAD><BODY><H2>File Menu</H2><ul>	<TABLE border=1 cellpadding=5>	<tr><td><A HREF="Load-Process-Item.html"><B>Load Process</B></A></td></tr>	<tr><td><A HREF="Terminate-Process-Item.html"><B>Terminate Process</B></A></td></tr>	<tr><td><B><A HREF="Init-Processor-Item.html">Initialize Processor</A></B></td></tr>	<tr><td><A HREF="Load-Boot-Image-Item.html"><B>Load Boot Image</B></A></td></tr>	<tr><td><A HREF="Load-Binary-Image-Item.html"><B>Load Binary Image</B></A></td></tr>	<tr><td><A HREF="Shutdown-Item.html">Shutdown System</A></td></tr>	<tr><td><A HREF="Save-IO-Item.html"><B>Save I/O</B></A></td></tr>	<tr><td><A HREF="Save-State-Item.html"><B>Save State</B></A></td></tr>	<tr><td><A HREF="Restore-State.html"><B>Restore State</B></A></td></tr>	<tr><td><A HREF="Quit-Item.html"><B>Quit</B></A></td></tr>	</Table></ul></BODY></HTML>
+<HTML>
+
+<HEAD>
+<TITLE>File Menu
+</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2>File Menu</H2>
+<ul>
+	<TABLE border=1 cellpadding=5 width=90%>
+	<tr valign=top><td><IMG ALIGN=bottom SRC="File-Menu.gif"></td>
+	<td>
+		<A HREF="Load-Process-Item.html"><h3>Load Process</h3></A>
+		<A HREF="Terminate-Process-Item.html"><h3>Terminate Process</h3></A>
+		<A HREF="Init-Processor-Item.html"><h3>Initialize Processor</h3></A>
+		<A HREF="http://www.cs.auckland.ac.nz/references/macvax/MacVAX-UsersGuide/File-Menu/Load-Boot-Image-Item.html"><h3>Load Boot Image</h3></A>
+		<A HREF="Load-Binary-Image-Item.html"><h3>Load Binary Image</h3></A>
+		<A HREF="Shutdown-Item.html"><h3>Shutdown System</h3></A>
+		<h3>Save I/O</h3>
+		Saves the contents of the <b>I/O Window</b> to a File.
+		
+		<h3>Save State</h3>
+		<ul>Save State will save the current simulator working environment to the object file.  This includes the position of the windows, the current display format of each window, as well as which windows are open and which are closed.  The Save State command writes a description of the current state to the MacVAX program’s file.  If MacVAX is stored on a write-protected disk or is configured to execute multiple copies from a fileserver, the Save State command will have no effect.
+</ul>
+		<h3>Restore State</h3>
+		<ul>Restore State will restore the most recently saved environment.  This is useful if you have altered the position and format of windows, and want to quickly get back to a previous state.</ul>
+		
+		<h3>Quit</h3>
+		<ul><b>Quit</b> quits MacVAX</ul>
+	</Table>
+</ul>
+
+
+</BODY>
+
+</HTML>

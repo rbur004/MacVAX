@@ -1,1 +1,56 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>AOB Instruction</TITLE></HEAD><BODY><H2>AOB Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td valign=top><b>Purpose:</b></td><td>Increment integer loop count and loop</td><tr>	<td valign=top><b>Format:</b></td><td>opcode limit.rl, index.ml, displ.bb</td><tr>	<td valign=top><b>Operation:</b></td><td>	<dl>	<dt>index &lt- index + 1;<br>	<dt><B>AOBLSS</B>	<dt>if index &lt limit then	<dd>PC &lt- PC + sign-extended displ	<dt><B>AOBLEQ</B>	<dt>if index &lt= limit then	<dd>PC &lt- PC + sign-extended displ	</dl></td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- index LSS 0;<br>			Z &lt- index EQL 0;<br>			V &lt- Integer Overflow;<br>			C &lt- C;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Oveflow</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>F2</td><td>AOBLSS</td><td>Add One and Branch Less Than</td>			<tr> <td>F3</td><td>AOBLEQ</td><td>Add One and Branch Less Than or Equal</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>One is added to the index operand and the index operand is replaced by the result. The index operand is compared with the limit operand. On AOBLSS, if it is less than, the branch is taken. On AOBLEQ, if it is less than or equal, the branch is taken. If the branch is taken, the sign-extended displacement operand is added to the <b>PC</b> and the <b>PC</b> is replaced by the result.</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>Integer overflow occurs if the index operand, before the addition, is the largest possible integer. On integer overflow, the index operand is replaced by the largest negative integer, and thus (unless the limit operand is the largest negative integer) the branch is taken.		<dt>2.<dd>The C-Bit is unaffected.</td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>AOB Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>AOB Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td valign=top><b>Purpose:</b></td><td>Increment integer loop count and loop</td>
+
+<tr>	<td valign=top><b>Format:</b></td><td>opcode limit.rl, index.ml, displ.bb</td>
+<tr>	<td valign=top><b>Operation:</b></td><td>
+	<dl>
+	<dt>index &lt- index + 1;<br>
+	<dt><B>AOBLSS</B>
+	<dt>if index &lt limit then
+	<dd>PC &lt- PC + sign-extended displ
+	<dt><B>AOBLEQ</B>
+	<dt>if index &lt= limit then
+	<dd>PC &lt- PC + sign-extended displ
+	</dl>
+</td>
+
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- index LSS 0;<br>
+			Z &lt- index EQL 0;<br>
+			V &lt- Integer Overflow;<br>
+			C &lt- C;</td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Oveflow</td>
+
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>F2</td><td>AOBLSS</td><td>Add One and Branch Less Than</td>
+			<tr> <td>F3</td><td>AOBLEQ</td><td>Add One and Branch Less Than or Equal</td>
+			</table>
+		</td>
+
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>One is added to the index operand and the index operand is replaced by the result. The index operand is compared with the limit operand. On AOBLSS, if it is less than, the branch is taken. On AOBLEQ, if it is less than or equal, the branch is taken. If the branch is taken, the sign-extended displacement operand is added to the <b>PC</b> and the <b>PC</b> is replaced by the result.</td>
+
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>Integer overflow occurs if the index operand, before the addition, is the largest possible integer. On integer overflow, the index operand is replaced by the largest negative integer, and thus (unless the limit operand is the largest negative integer) the branch is taken.
+		<dt>2.<dd>The C-Bit is unaffected.</td>
+</table>
+
+</BODY>
+
+</HTML>

@@ -1,1 +1,17 @@
-<H2>Initial Processor</H2><ol><li>All of Memory is zeroed.<li>All watch points are cleared.<li>All General Registers are zeroed.<li>All Internal Processor Registers are zeroed, except;<ul>	<li>IPR(MVMEM) = Available Real memory;	<li>IPR(TXCS) =  Console Ready bit is set;	<li>IPR(ASTR) =  Mark AST level as non pending;	<li>IPR(ISP) =   Set to Half way through physical memory</ul><li>PSL =  Using Interrupt stack, IPL = 0x1F, CMD = Kernel, PMD = kernel;</ol>
+<H2>Initial Processor</H2>
+<ol>
+<li>All of Memory is zeroed.
+
+<li>All watch points are cleared.
+
+<li>All General Registers are zeroed.
+
+<li>All Internal Processor Registers are zeroed, except;
+<ul>
+	<li>IPR(MVMEM) = Available Real memory;
+	<li>IPR(TXCS) =  Console Ready bit is set;
+	<li>IPR(ASTR) =  Mark AST level as non pending;
+	<li>IPR(ISP) =   Set to Half way through physical memory
+</ul>
+<li>PSL =  Using Interrupt stack, IPL = 0x1F, CMD = Kernel, PMD = kernel;
+</ol>

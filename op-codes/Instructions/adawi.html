@@ -1,1 +1,39 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>ADAWI Instruction</TITLE></HEAD><BODY><H2>ADAWI Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td><b>Purpose:</b></td><td>To maintain operating system resource counts</td><tr>	<td><b>Format:</b></td><td>opcode add.rx, sum.mx</td><tr>	<td valign=top><b>Operation:</b></td><td>{set interlock};<br>										sum &lt- sum + add;<br>										{release Interlock};</td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- sum LSS 0;<br>			Z &lt- sum EQL 0;<br>			V &lt- {integer overflow};<br>			C &lt- {Carry from the most significant bit};</td><tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Overflow</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>58</td><td>ADAWI</td><td>Add Aligned Word Interlocked</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>The sum operand is replaced by the sum of the addend operand and the sum operand. The addend operand is unaffected. The operation is interlocked against similar operations on other processors in a multi-processor system. The destination must be aligned to a word boundary. If it is not, then a reserved operand fault is taken.</td><tr>	<td valign=top><b>Notes:</b></td>		<td>Integer overflow occurs if the input operands to the add have the same sign and the result has the opposite sign. On overflow, the sum operand is replaced by the low order bits of the true result.</td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>ADAWI Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>ADAWI Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td><b>Purpose:</b></td><td>To maintain operating system resource counts</td>
+<tr>	<td><b>Format:</b></td><td>opcode add.rx, sum.mx</td>
+<tr>	<td valign=top><b>Operation:</b></td><td>{set interlock};<br>
+										sum &lt- sum + add;<br>
+										{release Interlock};</td>
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- sum LSS 0;<br>
+			Z &lt- sum EQL 0;<br>
+			V &lt- {integer overflow};<br>
+			C &lt- {Carry from the most significant bit};</td>
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Overflow</td>
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>58</td><td>ADAWI</td><td>Add Aligned Word Interlocked</td>
+			</table>
+		</td>
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>The sum operand is replaced by the sum of the addend operand and the sum operand. The addend operand is unaffected. The operation is interlocked against similar operations on other processors in a multi-processor system. The destination must be aligned to a word boundary. If it is not, then a reserved operand fault is taken.</td>
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td>Integer overflow occurs if the input operands to the add have the same sign and the result has the opposite sign. On overflow, the sum operand is replaced by the low order bits of the true result.</td>
+</table>
+
+</BODY>
+
+</HTML>

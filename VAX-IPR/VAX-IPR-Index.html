@@ -1,1 +1,89 @@
-<HTML><HEAD><TITLE>VAX Internal Processor Register Index</TITLE></HEAD><BODY><IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	<center><h1>MacVAX Internal Processor Registers Index</h1></center><br><p>These registers are accessed using the <b>mtpr</b> and <b>mfpr</b> instructions.<p><hr><!-- --------------------------------------------------------- --><ul><li><a href="IPR_STACK.html"><h3>Stack Registers</h3></a>	<ul>	<li><a href="IPR_STACK.html#IPR_0"><b>KSP 0x0</b></a>	<li><a href="IPR_STACK.html#IPR_1"><b>ESP 0x1</b></a>		<li><a href="IPR_STACK.html#IPR_2"><b>SSP 0x2</b></A>		<li><a href="IPR_STACK.html#IPR_3"><b>USP 0x3</b></A>		<li><a href="IPR_STACK.html#IPR_4"><b>ISP 0x4</b></A>		</ul>	<p><li><a href="IPR_MEMORY.html"><h3>Virtual Memory Registers</h3></A>	<ul>	<li><a href="IPR_MEMORY.html#IPR_8"><b>P0BR 0x8</b></A>	<li><a href="IPR_MEMORY.html#IPR_9"><b>P0LR 0x9</b></A>	<li><a href="IPR_MEMORY.html#IPR_A"><b>P1BR 	0xA</b></A>	<li><a href="IPR_MEMORY.html#IPR_B"><b>P1LR 	0xB</b></A>			<li><a href="IPR_MEMORY.html#IPR_C"><b>SBR 		0xC</b></A>		<li><a href="IPR_MEMORY.html#IPR_D"><b>SLR 		0xD</b></A>	<li><a href="IPR_MEMORY.html#IPR_38"><b>MAPEN	0x38</b></A>	</ul>	<p><li><a href="IPR_PCBB.html"><h3>Process Control Block</h3></A>	<ul>	<li><a href="IPR_PCBB.html#IPL_10"><b>PCBB 		0x10</b></A>	</ul>	<p><li><a href="IPL_INTERRUPT.html"><h3>Interrupt Handling</h3></A>	<ul>	<li><a href="IPL_INTERRUPT.html#IPL_11"><b>SCBB 		0x11</b></A>	<li><a href="IPL_INTERRUPT.html#IPL_12"><b>IPLR		0x12</b></A>	<li><a href="IPL_INTERRUPT.html#IPL_13"><b>ASTR 		0x13</b></a>	<li><a href="IPL_INTERRUPT.html#IPL_14"><b>SIRR		0x14</b></A>	<li><a href="IPL_INTERRUPT.html#IPL_15"><b>SISR		0x15</b></A>	</ul>	<p><li><a href="IPL_CLOCK.html"><h3>Clocks</h3></A>	<ul>	<li><a href="IPL_CLOCK.html#IPL_18"><B>ICCS 		0x18</B></A>	<li><a href="IPL_CLOCK.html#IPL_19"><b>NICR	0x19</b></A>	<li><a href="IPL_CLOCK.html#IPL_1A"><b>ICR 		0x1A</b></A>	<li><a href="IPL_CLOCK.html#IPL_1B"><b>TODR	0x1B</b></A>	</ul>	<p><li><a href="IPL_CONSOLE.html"><h3>Console Registers</h3></A>	<ul>	<li><a href="IPL_CONSOLE.html#IPL_20"><B>RXCS 	0x20</B></A>	<li><a href="IPL_CONSOLE.html#IPL_21"><B>RXDB	0x21</B></A>	<li><a href="IPL_CONSOLE.html#IPL_22"><B>TXCS	0x22</B></A>	<li><a href="IPL_CONSOLE.html#IPL_23"><B>TXDB	0x23</B></A>	</ul>	<p><li><a href="IPL_MACVAX.html"><h3>MacVAX</h3></A>	<ul>	<li><a href="IPL_MACVAX.html#IPL_29"><b>MVCR  0x29</b></a>	<li><a href="IPL_MACVAX.html#IPL_2A"><b>MVCS  0x2A </b></a>	<li><a href="IPL_MACVAX.html#IPL_2B"><b>MVPID 0x2B </b></a>	<li><a href="IPL_MACVAX.html#IPL_2C"><b>MVMEM 0x2C </b></a>	<li><a href="IPL_MACVAX.html#IPL_32"><b>KFP	 0x32 </b></a>	<li><a href="IPL_MACVAX.html#IPL_33"><b>EFP	 0x33 </b></a>	<li><a href="IPL_MACVAX.html#IPL_34"><b>SFP	 0x34 </b></a>	<li><a href="IPL_MACVAX.html#IPL_35"><b>UFP	 0x35 </b></a>	<li><a href="IPL_MACVAX.html#IPL_36"><b>IFP	 0x36 </b></a>	</ul>	<p><li><a href="IPL_MACHINE.html"><h3>Machine Check</h3></A>	<ul>	<li><a href="IPL_MACHINE.html#IPL_17"><b>MCSR 0x17</b></a>	<li><a href="IPL_MACHINE.html#IPL_26"><b>MCESR 0x26 </b></a>	</ul>	<p></ul></BODY></HTML>
+<HTML>
+
+<HEAD>
+<TITLE>VAX Internal Processor Register Index
+</TITLE>
+</HEAD>
+
+<BODY>
+<IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	
+
+<center><h1>MacVAX Internal Processor Registers Index</h1></center><br>
+
+<p>These registers are accessed using the <b>mtpr</b> and <b>mfpr</b> instructions.<p>
+
+<hr><!-- --------------------------------------------------------- -->
+<ul>
+<li><a href="IPR_STACK.html"><h3>Stack Registers</h3></a>
+	<ul>
+	<li><a href="IPR_STACK.html#IPR_0"><b>KSP 0x0</b></a>
+	<li><a href="IPR_STACK.html#IPR_1"><b>ESP 0x1</b></a>	
+	<li><a href="IPR_STACK.html#IPR_2"><b>SSP 0x2</b></A>	
+	<li><a href="IPR_STACK.html#IPR_3"><b>USP 0x3</b></A>	
+	<li><a href="IPR_STACK.html#IPR_4"><b>ISP 0x4</b></A>	
+	</ul>
+	<p>
+<li><a href="IPR_MEMORY.html"><h3>Virtual Memory Registers</h3></A>
+	<ul>
+	<li><a href="IPR_MEMORY.html#IPR_8"><b>P0BR 0x8</b></A>
+	<li><a href="IPR_MEMORY.html#IPR_9"><b>P0LR 0x9</b></A>
+	<li><a href="IPR_MEMORY.html#IPR_A"><b>P1BR 	0xA</b></A>
+	<li><a href="IPR_MEMORY.html#IPR_B"><b>P1LR 	0xB</b></A>		
+	<li><a href="IPR_MEMORY.html#IPR_C"><b>SBR 		0xC</b></A>	
+	<li><a href="IPR_MEMORY.html#IPR_D"><b>SLR 		0xD</b></A>
+	<li><a href="IPR_MEMORY.html#IPR_38"><b>MAPEN	0x38</b></A>
+	</ul>
+	<p>
+<li><a href="IPR_PCBB.html"><h3>Process Control Block</h3></A>
+	<ul>
+	<li><a href="IPR_PCBB.html#IPL_10"><b>PCBB 		0x10</b></A>
+	</ul>
+	<p>
+<li><a href="IPL_INTERRUPT.html"><h3>Interrupt Handling</h3></A>
+	<ul>
+	<li><a href="IPL_INTERRUPT.html#IPL_11"><b>SCBB 		0x11</b></A>
+	<li><a href="IPL_INTERRUPT.html#IPL_12"><b>IPLR		0x12</b></A>
+	<li><a href="IPL_INTERRUPT.html#IPL_13"><b>ASTR 		0x13</b></a>
+	<li><a href="IPL_INTERRUPT.html#IPL_14"><b>SIRR		0x14</b></A>
+	<li><a href="IPL_INTERRUPT.html#IPL_15"><b>SISR		0x15</b></A>
+	</ul>
+	<p>
+<li><a href="IPL_CLOCK.html"><h3>Clocks</h3></A>
+	<ul>
+	<li><a href="IPL_CLOCK.html#IPL_18"><B>ICCS 		0x18</B></A>
+	<li><a href="IPL_CLOCK.html#IPL_19"><b>NICR	0x19</b></A>
+	<li><a href="IPL_CLOCK.html#IPL_1A"><b>ICR 		0x1A</b></A>
+	<li><a href="IPL_CLOCK.html#IPL_1B"><b>TODR	0x1B</b></A>
+	</ul>
+	<p>
+<li><a href="IPL_CONSOLE.html"><h3>Console Registers</h3></A>
+	<ul>
+	<li><a href="IPL_CONSOLE.html#IPL_20"><B>RXCS 	0x20</B></A>
+	<li><a href="IPL_CONSOLE.html#IPL_21"><B>RXDB	0x21</B></A>
+	<li><a href="IPL_CONSOLE.html#IPL_22"><B>TXCS	0x22</B></A>
+	<li><a href="IPL_CONSOLE.html#IPL_23"><B>TXDB	0x23</B></A>
+	</ul>
+	<p>
+<li><a href="IPL_MACVAX.html"><h3>MacVAX</h3></A>
+	<ul>
+	<li><a href="IPL_MACVAX.html#IPL_29"><b>MVCR  0x29</b></a>
+	<li><a href="IPL_MACVAX.html#IPL_2A"><b>MVCS  0x2A </b></a>
+	<li><a href="IPL_MACVAX.html#IPL_2B"><b>MVPID 0x2B </b></a>
+	<li><a href="IPL_MACVAX.html#IPL_2C"><b>MVMEM 0x2C </b></a>
+	<li><a href="IPL_MACVAX.html#IPL_32"><b>KFP	 0x32 </b></a>
+	<li><a href="IPL_MACVAX.html#IPL_33"><b>EFP	 0x33 </b></a>
+	<li><a href="IPL_MACVAX.html#IPL_34"><b>SFP	 0x34 </b></a>
+	<li><a href="IPL_MACVAX.html#IPL_35"><b>UFP	 0x35 </b></a>
+	<li><a href="IPL_MACVAX.html#IPL_36"><b>IFP	 0x36 </b></a>
+	</ul>
+	<p>
+<li><a href="IPL_MACHINE.html"><h3>Machine Check</h3></A>
+	<ul>
+	<li><a href="IPL_MACHINE.html#IPL_17"><b>MCSR 0x17</b></a>
+	<li><a href="IPL_MACHINE.html#IPL_26"><b>MCESR 0x26 </b></a>
+	</ul>
+	<p>
+</ul>
+
+</BODY>
+</HTML>

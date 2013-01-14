@@ -1,1 +1,56 @@
-<HTML><HEAD><TITLE>MACVAX XFC Calls Console</TITLE></HEAD><BODY><!-- --------------------------------------------------------- --><A NAME="xfc_INTRODUCTION"></A><IMG ALIGN=left SRC="../pics/MacVAX-Icon.GIF">	<center><h1>MacVAX XFC (system) Calls</h1></center><br><p><hr><!-- --------------------------------------------------------- --><A NAME="xfc_CONSOLE"></A><h2>Console IO</h2><ul>	These calls use the console <b>IPR</b> registers to perform IO to the MacVAXC <b>I0 Window</b>.They provide a simple method of performing character IO without needing to write a device driver.<p><A NAME="xfc_0"></A><dl><dt><B>XFC #READCHAR (0)</B><dd>Reads one character from keyboard with no echoing.  The character is returned in the low byte of <b>r0</b>.<p><A NAME="xfc_1"></A><dt><B>XFC #WRITECHAR (1)</B><dd>Output one character to the I/O window.  The character is passed in the low byte of <b>r0</b>.<p><A NAME="xfc_2"></A><dt><B>XFC #READLINE (2)</B><dd>Inputs one line from the keyboard (equivalent to Pascal's readln). Characters are echoed and erase/kill processing is performed.  On execution, <b>r0</b> must contain the address where the string is to be placed.  After execution <b>r0</b> points to one byte after the end of the string, and <b>r1</b> contains the length of the string.  An end of line character is <b>not</b> appended to the return string.<p><A NAME="xfc_3"></A><dt><B>XFC #WRITESTRING (3)</B><dd>Output one line to the screen (equivalent to Pascal's write).  On execution, <b>r0</b> must contain the address of a buffer which contains the string to output, and <B>r1</B> the length of the string.  Characters from the buffer are output one at a time until a null byte is reached or <B>r1</B> characters have been written.  After execution <B>r0</B> points to the byte after the terminating character of the string.</dl></ul>  <!-- --------------------------------------------------------- --></BODY></HTML>
+<HTML>
+
+<HEAD>
+<TITLE>MACVAX XFC Calls Console
+</TITLE>
+</HEAD>
+
+<BODY>
+<!-- --------------------------------------------------------- -->
+<A NAME="xfc_INTRODUCTION"></A>
+<IMG ALIGN=left SRC="../pics/MacVAX-Icon.GIF">	
+
+<center><h1>MacVAX XFC (system) Calls</h1></center><br>
+
+<p>
+
+<hr><!-- --------------------------------------------------------- -->
+<A NAME="xfc_CONSOLE"></A>
+<h2>Console IO</h2>
+<ul>
+	These calls use the console <b>IPR</b> registers to perform IO to the MacVAXC <b>I0 Window</b>.They provide a simple method of performing character IO without needing to write a device driver.
+<p>
+<A NAME="xfc_0"></A>
+<dl>
+<dt><B>XFC #READCHAR (0)</B>
+<dd>Reads one character from keyboard with no echoing.  The character is returned in the low byte of <b>r0</b>.
+
+<p>
+<A NAME="xfc_1"></A>
+<dt><B>XFC #WRITECHAR (1)</B>
+<dd>Output one character to the I/O window.  The character is passed in the low byte of <b>r0</b>.
+
+<p>
+<A NAME="xfc_2"></A>
+<dt><B>XFC #READLINE (2)</B>
+<dd>Inputs one line from the keyboard (equivalent to Pascal's readln). Characters are echoed 
+and erase/kill processing is performed.  On execution, <b>r0</b> must contain the address 
+where the string is to be placed.  After execution <b>r0</b> points to one byte after the end of 
+the string, and <b>r1</b> contains the length of the string.  An end of line character is <b>not</b> 
+appended to the return string.
+
+<p>
+<A NAME="xfc_3"></A>
+<dt><B>XFC #WRITESTRING (3)</B>
+<dd>Output one line to the screen (equivalent to Pascal's write).  On execution, <b>r0</b> must 
+contain the address of a buffer which contains the string to output, and <B>r1</B> the length of 
+the string.  Characters from the buffer are output one at a time until a null byte is 
+reached or <B>r1</B> characters have been written.  After execution <B>r0</B> points to the byte after 
+the terminating character of the string.
+</dl>
+</ul>  
+
+<!-- --------------------------------------------------------- -->
+
+</BODY>
+</HTML>

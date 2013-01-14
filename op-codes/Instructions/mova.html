@@ -1,1 +1,51 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>MOVA Instruction</TITLE></HEAD><BODY><H2>MOVA Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td valign=top><b>Purpose:</b></td><td>To calculate the address of a  quantity</td><tr>	<td valign=top><b>Format:</b></td><td>opcode src.ax, dst.wl</td><tr>	<td valign=top><b>Operation:</b></td><td>dst &lt- src;</td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- dst LSS 0;<br>			Z &lt- dst EQL 0;<br>			V &lt- 0;<br>			C &lt- C;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>None</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>9E</td><td>MOVAB</td><td>Move Address Byte</td>			<tr> <td>3E</td><td>MOVAW</td><td>Move Address Word</td>			<tr> <td>DE</td><td>MOVAL</td><td>Move Address Long</td>			<tr> <td>7E</td><td>MOVAQ</td><td>Move Address Quad</td>			<tr> <td>DE</td><td>MOVAF</td><td>Move Address Float</td>			<tr> <td>7E</td><td>MOVAD</td><td>Move Address Double</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>The destination operand is replaced by the source operand which is an address. The context in which the source operand is evaluated is given by the data type of the instruction. The source operand, whose address replaces the destination operand, is not referenced. The source operand is unaffected.</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>The source operand is of address access type which causes the address of the specified operand to be moved		</dl></td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>MOVA Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>MOVA Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td valign=top><b>Purpose:</b></td><td>To calculate the address of a  quantity</td>
+
+<tr>	<td valign=top><b>Format:</b></td><td>opcode src.ax, dst.wl</td>
+
+<tr>	<td valign=top><b>Operation:</b></td><td>dst &lt- src;</td>
+
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- dst LSS 0;<br>
+			Z &lt- dst EQL 0;<br>
+			V &lt- 0;<br>
+			C &lt- C;</td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>None</td>
+
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>9E</td><td>MOVAB</td><td>Move Address Byte</td>
+			<tr> <td>3E</td><td>MOVAW</td><td>Move Address Word</td>
+			<tr> <td>DE</td><td>MOVAL</td><td>Move Address Long</td>
+			<tr> <td>7E</td><td>MOVAQ</td><td>Move Address Quad</td>
+			<tr> <td>DE</td><td>MOVAF</td><td>Move Address Float</td>
+			<tr> <td>7E</td><td>MOVAD</td><td>Move Address Double</td>
+			</table>
+		</td>
+
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>The destination operand is replaced by the source operand which is an address. The context in which the source operand is evaluated is given by the data type of the instruction. The source operand, whose address replaces the destination operand, is not referenced. The source operand is unaffected.</td>
+
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>The source operand is of address access type which causes the address of the specified operand to be moved
+		</dl></td>
+</table>
+
+</BODY>
+
+</HTML>

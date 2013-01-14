@@ -1,1 +1,53 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>BLB Instruction</TITLE></HEAD><BODY><H2>BLB Instructions</h2><table border=0 valign=top cellpadding=5><tr>	<td valign=top><b>Purpose:</b></td><td>Branch on test of low bit</td><tr>	<td valign=top><b>Format:</b></td><td>opcode src.rl, displ.bb</td><tr>	<td valign=top><b>Operation:</b></td><td>	<dl>	<dt>teststate = if ( BLBS ) then 1 else 0;	<dt>if src bit 0 EQL teststate then	<dd>PC &lt- PC + sign-extended displ	</dl>	</td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- N;<br>			Z &lt- Z;<br>			V &lt- V;<br>			C &lt- C;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>None</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>E8</td><td>BLBS</td><td>Branch on low bit Set</td>			<tr> <td>E9</td><td>BLBC</td><td>Branch on low bit Clear</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>The low bit of the source operand is tested and if equal to the state indicated by the instruction, the sign-extended branch displacement is added to the PC and the PC is replaced with the result.</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>The source operand is taken with long word context although only one bit is tested.		<dt>2.<dd>The displacement is a signed byte. In order to achieve a greater branch displacement, a reverse test, branching over the following instruction, followed by a <b>BRW</b> or a <b>JMP</b> may be used. The assembler pseudo instructions <b>J</b>xxx, where the J replaces the first B of any of the above instructions,  may used to have the assembler perform this substitution when necessary.</dl></td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>BLB Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>BLB Instructions</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td valign=top><b>Purpose:</b></td><td>Branch on test of low bit</td>
+
+<tr>	<td valign=top><b>Format:</b></td><td>opcode src.rl, displ.bb</td>
+
+<tr>	<td valign=top><b>Operation:</b></td><td>
+	<dl>
+	<dt>teststate = if ( BLBS ) then 1 else 0;
+	<dt>if src bit 0 EQL teststate then
+	<dd>PC &lt- PC + sign-extended displ
+	</dl>
+	</td>
+
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- N;<br>
+			Z &lt- Z;<br>
+			V &lt- V;<br>
+			C &lt- C;</td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>None</td>
+
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>E8</td><td>BLBS</td><td>Branch on low bit Set</td>
+			<tr> <td>E9</td><td>BLBC</td><td>Branch on low bit Clear</td>
+			</table>
+		</td>
+
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>The low bit of the source operand is tested and if equal to the state indicated by the instruction, the sign-extended branch displacement is added to the PC and the PC is replaced with the result.</td>
+
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>The source operand is taken with long word context although only one bit is tested.
+		<dt>2.<dd>The displacement is a signed byte. In order to achieve a greater branch displacement, a reverse test, branching over the following instruction, followed by a <b>BRW</b> or a <b>JMP</b> may be used. The assembler pseudo instructions <b>J</b>xxx, where the J replaces the first B of any of the above instructions,  may used to have the assembler perform this substitution when necessary.</dl></td>
+</table>
+
+</BODY>
+
+</HTML>

@@ -1,1 +1,84 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>REI Instruction</TITLE></HEAD><BODY><H2>REI Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td valign=top><b>Purpose:</b></td><td>To return after an interrupt or exception service routine.</td><tr>	<td valign=top><b>Format:</b></td><td>opcode</td><tr>	<td valign=top><b>Operation:</b></td><td>		<dl>		<dt>tmp1 &lt- (SP)+; Pick up saved PC		<dt>tmp2 &lt- (SP)+; Pick up saved PSL		<br><br>		<dt>if { tmp2&ltCMD&gt LSSU PSL&ltCMD&gt}		<dt>OR { tmp2&ltIS&gt EQLU 1 and PSL&ltIS&gt EQLU 0}		<dt>OR { tmp2&ltIS&gt EQLU 1 and tmp2&ltCMD&gt NEQU 0}		<dt>OR { tmp2&ltIS&gt EQLU 1 and tmp2&ltIPL&gt EQLU 0}		<dt>OR { tmp2&ltIPL&gt GTRU 0 and tmp2&ltCMD&gt NEQU 0}		<dt>OR { tmp2&ltPMD&gt LSSU  tmp2&ltCMD&gt }		<dt>OR { tmp2&ltIPL&gt GTRU  PSL&ltIPL&gt }		<dt>OR { tmp2&ltMBZ&gt NEQU  0 }		<dt>then			<dd>reserved operand fault;		<dt>if { tmp2&ltCM&gt EQLU 1 }		<dt>AND{ tmp2&ltFPD,IS,DV,FU,IV&gt NEQU 0 }		<dt>OR { tmp2&ltCMD&gt NEQU 3 }		<dt>			<dd>reserved operand fault;		<br><br>		<dt>{disallow interrupts};		<dt>if PSL&ltIS&gt EQLU1 then			<dd>ISP &lt- SP;		<dt>else			<dd>PSL&ltCMD&gt_SP &lt- SP		<dt>if PSL&ltTP&gt EQLU 1 then			<dd>tmp2&ltTP&gt &lt- 1;		<dt>PC &lt- tmp1;		<dt>PSL &lt- tmp2;		<dt>if PSL&ltIS&gt EQLU 0 then			<dd>SP &lt- PSL&ltCMD&gt_SP;<br>				<dl>				<dt>If PSL&ltCMD&gt> GEQU ASTLVL then					<dd>{request interrupt at IPL 2};				</dl>		<dt>{allow interrupts};		</dl></td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- saved PSL&ltN&gt;<br>			Z &lt- saved PSL&ltZ&gt;<br>			V &lt- saved PSL&ltV&gt;<br>			C &lt- saved PSL&ltC&gt;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>Reserved Operand</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>02</td><td>REI</td><td>Return from Exception or Interrupt</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>A longword is popped from the current stack and held in a temorary PC. A second longword  is popped from the stack and held in a temporary PSL. Validity of the popped PSL is checked. The current stack pointer is saved and a new stack pointer is selected according to the new PSL current mode and IS fields. The level of the highest priviledge AST is checked against the current mode access to see whether a pending AST can be delivered. Execution resumes with the instruction being executed at the time of the exception or interrupt (ie. the PC is replaced by the temporary PC). Any instruction lookahead in the processor is reinitialized.</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>The exception or interrupt service routine is responsible for restoring any registers saved and removing any parameters from the stack.		<dt>2.<dd>As usual for faults, any access violation or translation not valid conditions on the stack pops restore the pointer and fault.		<dt>3.<dd>The non-interrupt stack pointers may be fetched and stored by hardware either in internal registers or in their allocated slots in the Process Control Block. Only <A HREF="ldpctx.html">LDPCTX</A> and <A HREF="svpctx.html">SVCPTX</A> always fetch and store in the PCB. <A HREF="mtpr.html">MFPR</A> and <A HREF="mtpr.html">MTPR</A> always fetch and store the pointers whether in registers or the PCB.</td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>REI Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>REI Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td valign=top><b>Purpose:</b></td><td>To return after an interrupt or exception service routine.</td>
+
+<tr>	<td valign=top><b>Format:</b></td><td>opcode</td>
+
+<tr>	<td valign=top><b>Operation:</b></td><td>
+		<dl>
+		<dt>tmp1 &lt- (SP)+; Pick up saved PC
+		<dt>tmp2 &lt- (SP)+; Pick up saved PSL
+		<br><br>
+		<dt>if { tmp2&ltCMD&gt LSSU PSL&ltCMD&gt}
+		<dt>OR { tmp2&ltIS&gt EQLU 1 and PSL&ltIS&gt EQLU 0}
+		<dt>OR { tmp2&ltIS&gt EQLU 1 and tmp2&ltCMD&gt NEQU 0}
+		<dt>OR { tmp2&ltIS&gt EQLU 1 and tmp2&ltIPL&gt EQLU 0}
+		<dt>OR { tmp2&ltIPL&gt GTRU 0 and tmp2&ltCMD&gt NEQU 0}
+		<dt>OR { tmp2&ltPMD&gt LSSU  tmp2&ltCMD&gt }
+		<dt>OR { tmp2&ltIPL&gt GTRU  PSL&ltIPL&gt }
+		<dt>OR { tmp2&ltMBZ&gt NEQU  0 }
+		<dt>then
+			<dd>reserved operand fault;
+		<dt>if { tmp2&ltCM&gt EQLU 1 }
+		<dt>AND{ tmp2&ltFPD,IS,DV,FU,IV&gt NEQU 0 }
+		<dt>OR { tmp2&ltCMD&gt NEQU 3 }
+		<dt>
+			<dd>reserved operand fault;
+		<br><br>
+		<dt>{disallow interrupts};
+		<dt>if PSL&ltIS&gt EQLU1 then
+			<dd>ISP &lt- SP;
+		<dt>else
+			<dd>PSL&ltCMD&gt_SP &lt- SP
+		<dt>if PSL&ltTP&gt EQLU 1 then
+			<dd>tmp2&ltTP&gt &lt- 1;
+		<dt>PC &lt- tmp1;
+		<dt>PSL &lt- tmp2;
+		<dt>if PSL&ltIS&gt EQLU 0 then
+			<dd>SP &lt- PSL&ltCMD&gt_SP;<br>
+				<dl>
+				<dt>If PSL&ltCMD&gt> GEQU ASTLVL then
+					<dd>{request interrupt at IPL 2};
+				</dl>
+		<dt>{allow interrupts};
+		</dl></td>
+
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- saved PSL&ltN&gt;<br>
+			Z &lt- saved PSL&ltZ&gt;<br>
+			V &lt- saved PSL&ltV&gt;<br>
+			C &lt- saved PSL&ltC&gt;</td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Reserved Operand</td>
+
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>02</td><td>REI</td><td>Return from Exception or Interrupt</td>
+			</table>
+		</td>
+
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>A longword is popped from the current stack and held in a temorary PC. A second longword  is popped from the stack and held in a temporary PSL. Validity of the popped PSL is checked. The current stack pointer is saved and a new stack pointer is selected according to the new PSL current mode and IS fields. The level of the highest priviledge AST is checked against the current mode access to see whether a pending AST can be delivered. Execution resumes with the instruction being executed at the time of the exception or interrupt (ie. the PC is replaced by the temporary PC). Any instruction lookahead in the processor is reinitialized.</td>
+
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>The exception or interrupt service routine is responsible for restoring any registers saved and removing any parameters from the stack.
+		<dt>2.<dd>As usual for faults, any access violation or translation not valid conditions on the stack pops restore the pointer and fault.
+		<dt>3.<dd>The non-interrupt stack pointers may be fetched and stored by hardware either in internal registers or in their allocated slots in the Process Control Block. Only <A HREF="ldpctx.html">LDPCTX</A> and <A HREF="svpctx.html">SVCPTX</A> always fetch and store in the PCB. <A HREF="mtpr.html">MFPR</A> and <A HREF="mtpr.html">MTPR</A> always fetch and store the pointers whether in registers or the PCB.</td>
+</table>
+
+</BODY>
+
+</HTML>

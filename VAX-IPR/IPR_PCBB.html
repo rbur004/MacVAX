@@ -1,1 +1,29 @@
-<html><head><title>Internal Processor Registers</title></head><body><IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	<center><h1>VAX Internal Processor Registers<br>Process Control Block</h1></center><br><p>These registers are accessed using the <b>mtpr</b> and <b>mfpr</b> instructions.<p><hr><!-- -------------------------------------------------------------- --><dl compact><A NAME="IPL_10"></A>	<dt><b>PCBB 			<dd>0x10</b> Process Control Block Base	(Read / Write)<p>	<IMG ALIGN=bottom SRC="pics/IPR-SBR.GIF">   <p> 	                                                             	<b>PCBB</b> holds the Physical address of  the current processes 	Process Control 	Block 	The address must be long aligned (the low 2 bits must be 00) .<p>	</dl></body></html>
+<html>
+<head>
+<title>Internal Processor Registers</title>
+</head>
+
+<body>
+
+<IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	
+
+<center><h1>VAX Internal Processor Registers<br>
+Process Control Block</h1></center><br>
+
+<p>These registers are accessed using the <b>mtpr</b> and <b>mfpr</b> instructions.<p>
+
+<hr><!-- -------------------------------------------------------------- -->
+<dl compact>
+<A NAME="IPL_10"></A>
+	<dt><b>PCBB 		
+	<dd>0x10</b> Process Control Block Base	(Read / Write)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-SBR.GIF">   <p> 
+	                                                             
+	<b>PCBB</b> holds the Physical address of  the current processes 
+	Process Control 	Block 
+	The address must be long aligned (the low 2 bits must be 00) .<p>
+	
+</dl>
+
+</body>
+</html>

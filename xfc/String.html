@@ -1,1 +1,60 @@
-<HTML><HEAD><TITLE>MACVAX XFC Calls</TITLE></HEAD><BODY><!-- --------------------------------------------------------- --><A NAME="xfc_INTRODUCTION"></A><IMG ALIGN=left SRC="../pics/MacVAX-Icon.GIF">	<center><h1>MacVAX XFC (system) Calls</h1></center><br><p><hr><!-- --------------------------------------------------------- --><A NAME="xfc_STRNUM"></A><h2>String To Number Conversion</h2><ul>These calls provide &quotnumber to string&quot and &quotstring to number&quot conversions.<p><A NAME="xfc_4"></A><dl><dt><B>XFC #AHTOI (4)</B><dd>Convert a hexadecimal number string into the equivalent binary number.  On execution <B>r0</B> must contain the address of the string to convert ( leading spaces in the string are skipped until a hex digit is found).  The conversion continues until either eight hex digits have been found or a non hex digit is encountered.  After execution the binary value is returned in <B>r1</B>, and <B>r0</B> points to the byte after the last digit converted.<p><A NAME="xfc_5"></A><dt><B>XFC #ADTOI (5)</B><dd>Convert a decimal number string into the equivalent binary number.  On execution <B>r0</B> must contain the address of the string to convert (leading spaces in the string are skipped until a decimal digit is found).  The conversion continues until either ten decimal digits have been found or a non decimal digit is encountered.  After execution the binary value is returned in <B>r1</B>, and <B>r0</B> points to the byte after the last digit converted.<p><A NAME="xfc_6"></A><dt><B>XFC #ITOAH (6)</B><dd>Convert a binary number into a hexadecimal string.  On execution <B>r0</B> contains the address of a buffer where the string will be placed, and <B>r1</B> contains the integer to be converted.  After execution <B>r0</B> points to 1 byte past the end of the string.<p><A NAME="xfc_7"></A><dt><B>XFC #ITOAD (7)</B><dd>Convert a binary number into a decimal string.  On execution <B>r0</B> contains the address of a buffer where the string will be placed, and <B>r1</B> contains the integer to be converted.    After execution <B>r0</B> points to 1 byte past the end of the string.</dl></ul><!-- --------------------------------------------------------- --></BODY></HTML>
+<HTML>
+
+<HEAD>
+<TITLE>MACVAX XFC Calls
+</TITLE>
+</HEAD>
+
+<BODY>
+<!-- --------------------------------------------------------- -->
+<A NAME="xfc_INTRODUCTION"></A>
+<IMG ALIGN=left SRC="../pics/MacVAX-Icon.GIF">	
+
+<center><h1>MacVAX XFC (system) Calls</h1></center><br>
+
+<p>
+
+<hr><!-- --------------------------------------------------------- -->
+<A NAME="xfc_STRNUM"></A>
+<h2>String To Number Conversion</h2>
+<ul>
+These calls provide &quotnumber to string&quot and &quotstring to number&quot conversions.
+<p>
+<A NAME="xfc_4"></A>
+<dl>
+<dt><B>XFC #AHTOI (4)</B>
+<dd>Convert a hexadecimal number string into the equivalent binary number.  On 
+execution <B>r0</B> must contain the address of the string to convert ( leading spaces in the 
+string are skipped until a hex digit is found).  The conversion continues until either 
+eight hex digits have been found or a non hex digit is encountered.  After execution the 
+binary value is returned in <B>r1</B>, and <B>r0</B> points to the byte after the last digit converted.
+
+<p>
+<A NAME="xfc_5"></A>
+<dt><B>XFC #ADTOI (5)</B>
+<dd>Convert a decimal number string into the equivalent binary number.  On execution <B>r0</B> 
+must contain the address of the string to convert (leading spaces in the string are 
+skipped until a decimal digit is found).  The conversion continues until either ten 
+decimal digits have been found or a non decimal digit is encountered.  After execution 
+the binary value is returned in <B>r1</B>, and <B>r0</B> points to the byte after the last digit converted.
+
+<p>
+<A NAME="xfc_6"></A>
+<dt><B>XFC #ITOAH (6)</B>
+<dd>Convert a binary number into a hexadecimal string.  On execution <B>r0</B> contains the 
+address of a buffer where the string will be placed, and <B>r1</B> contains the integer to be 
+converted.  After execution <B>r0</B> points to 1 byte past the end of the string.
+
+<p>
+<A NAME="xfc_7"></A>
+<dt><B>XFC #ITOAD (7)</B>
+<dd>Convert a binary number into a decimal string.  On execution <B>r0</B> contains the address of 
+a buffer where the string will be placed, and <B>r1</B> contains the integer to be converted.    
+After execution <B>r0</B> points to 1 byte past the end of the string.
+</dl>
+</ul>
+
+<!-- --------------------------------------------------------- -->
+
+</BODY>
+</HTML>

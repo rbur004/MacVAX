@@ -1,1 +1,98 @@
-<html><head><title>Internal Processor Registers</title></head><body><IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	<center><h1>VAX Internal Processor Registers<br>Clocks</h1></center><br><p>These registers are accessed using the <b>mtpr</b> and <b>mfpr</b> instructions.<p><hr><!-- -------------------------------------------------------------- --><dl compact><A NAME="IPL_18"></A>	<dt><B>ICCS 			<dd>0x18</B> Interval Clock Control Status Register		(Read / Write)<P>	<IMG ALIGN=bottom SRC="pics/IPR-ICCS.GIF">		<ul>                                                        	<b>E</b> = <b>ERR</b> or error bit. 	 (set by hardware, write clears)<br>	<b>I</b> = <b>INT</b> or interrupt bit. 	(set by hardware, write clears)<br> 	<b>IE</b> = <b>INT_ENB</b> or interrupt enabled bit	(read/write)<br>	<b>S</b> = <b>SGL</b> or Single increment bit 	(write only)<br> 	<b>X</b> = <b>XFR</b> or transfer bit	(write only)<br>	<b>R</b> = <b>RUN</b> 	(read/write)	</ul>	<p>	The <b>ICCS</b> is a read/write register that contains control and 	status 	information for the 	interval clock. When the <b>RUN</b> bit is <b>1</b>, the <b>ICR</b>	 register is 	incremented every 	microsecond (instruction on <b>MACVAX</b>). Writing to the <b>XFR</b>	 (transfer) 	bit will  copy the 	<b>NICR</b> to the <b>ICR</b>.  Writing to the <b>SGL</b> (single increment) 	bit 	when the <b>RUN</b> bit is zero 	will increment <b>ICR</b>.  When the <b>INT_ENB</b> (interrupt enable) bit 	is one 	an overflow of 	the <b>ICR</b> will generate an interrupt at <b>IPL 24</b>. 	The <b>INT</b> 	(interrupt) bit is set by hardware 	whenever the <b>ICR</b> overflows. It can must be cleared by the clock 	interrupt 	service 	routine by writing the the <b>INT</b> bit (ie.. writing a one to 	it clears it). 	The <b>ERR</b> (error) bit is 	set by hardware when an overflow occurs and the <b>INT</b> bit is	 already set. It 	may be 	cleared by writing a one to it.<p>	<A NAME="IPL_19"></A>	<dt><b>NICR		<dd>0x19</b> Next Interval Count Register			(Write Only)<p>	<IMG ALIGN=bottom SRC="pics/IPR-generic.GIF">		                                                             	<p>The <b>NICR</b> is a write only register that holds the clock 	count in 	microseconds to be 	loaded into the <b>ICR</b> when the <b>ICR</b> overflows (ie.. 	after an increment 	its value is zero) or 	when the <b>XFR</b> (transfer) bit of the <b>ICCS</b> is written to.	 As the 	<b>ICR</b> register is incremented, 	not decremented, the value stored in <b>NICR</b> should be set to the 	two's  	complement of 	the interval wanted.<p>	<A NAME="IPL_1A"></A>	<dt><b>ICR 			<dd>0x1A</b> Interval Count Register				(Read Only)<p>	<IMG ALIGN=bottom SRC="pics/IPR-generic.GIF">		                                                             	<p>The <B>ICR</B> is a read only register that is incremented every	microsecond on a 	VAX (every 	instruction on MACVAX) while the <B>RUN</B> bit of the <B>ICCS</B> 	is one. It can 	also be 	incremented by writing to the <B>SGL</B> (single increment)	 bit of the 	<B>ICCS</B>. It is loaded from 	the <B>NICR</B> when the <B>XFR</B> (transfer) bit of the 	<B>ICCS</B> is written 	to or when the <B>ICR</B> 	overflows (ie.. after an increment its value is zero). 	 An overflow will also set 	the <B>INT</B> 	(interrupt) bit of the <B>ICCS</B>. If the <B>INT</B> bit 	was already set the 	<B>ERR</B> (error) bit will be set to 	indicate one or more clock interrupts have been missed. If 	the <B>INT_ENB</B> 	(interrupt 	enable) bit is one, an overflow will generate an interrupt at 	<B>IPL 24</B>. <A NAME="IPL_1B"></A>	<dt><b>TODR		<dd>0x1B</b> Time of Year			(Read Only)<p>	<IMG ALIGN=bottom SRC="pics/IPR-generic.GIF">		                                                	<p>The MacVAX simulator provides a Time of Year processor register using the 	Macintosh internal clock.  The VAX clock has a resolution of 10ms. As the 	Macintosh 	clock has a resolution of 1 second, the low bits of the register will always be 0.  Thus the clock will overflow in 497 days.  Note that the interval timers, above, operate on the basis that one instruction takes 1ms and they are only incremented when an instruction has been executed (i.e. they do not increment while MacVAX is halted. The <B>TODR</B> gets its time from the Macintosh clock, which is always running. <b>TODR</b> is accessed with <b>mfpr</b> #<B>TODR</B>.	</dl></body></html>
+<html>
+<head>
+<title>Internal Processor Registers</title>
+</head>
+
+<body>
+
+<IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	
+
+<center><h1>VAX Internal Processor Registers<br>Clocks</h1></center><br>
+
+<p>These registers are accessed using the <b>mtpr</b> and <b>mfpr</b> instructions.<p>
+
+<hr><!-- -------------------------------------------------------------- -->
+<dl compact>
+<A NAME="IPL_18"></A>
+	<dt><B>ICCS 		
+	<dd>0x18</B> Interval Clock Control Status Register		(Read / Write)<P>
+	<IMG ALIGN=bottom SRC="pics/IPR-ICCS.GIF">	
+	<ul>                                                        
+	<b>E</b> = <b>ERR</b> or error bit. 	 (set by hardware, write clears)<br>
+	<b>I</b> = <b>INT</b> or interrupt bit. 	(set by hardware, write clears)<br> 
+	<b>IE</b> = <b>INT_ENB</b> or interrupt enabled bit	(read/write)<br>
+	<b>S</b> = <b>SGL</b> or Single increment bit 	(write only)<br> 
+	<b>X</b> = <b>XFR</b> or transfer bit	(write only)<br>
+	<b>R</b> = <b>RUN</b> 	(read/write)
+	</ul>
+	<p>
+	The <b>ICCS</b> is a read/write register that contains control and 
+	status 	information for the 
+	interval clock. When the <b>RUN</b> bit is <b>1</b>, the <b>ICR</b>
+	 register is 	incremented every 
+	microsecond (instruction on <b>MACVAX</b>). Writing to the <b>XFR</b>
+	 (transfer) 	bit will  copy the 
+	<b>NICR</b> to the <b>ICR</b>.  Writing to the <b>SGL</b> (single increment) 
+	bit 	when the <b>RUN</b> bit is zero 
+	will increment <b>ICR</b>.  When the <b>INT_ENB</b> (interrupt enable) bit 
+	is one 	an overflow of 
+	the <b>ICR</b> will generate an interrupt at <b>IPL 24</b>. 
+	The <b>INT</b> 	(interrupt) bit is set by hardware 
+	whenever the <b>ICR</b> overflows. It can must be cleared by the clock 
+	interrupt 	service 
+	routine by writing the the <b>INT</b> bit (ie.. writing a one to 
+	it clears it). 	The <b>ERR</b> (error) bit is 
+	set by hardware when an overflow occurs and the <b>INT</b> bit is
+	 already set. It 	may be 
+	cleared by writing a one to it.<p>
+	
+<A NAME="IPL_19"></A>
+	<dt><b>NICR	
+	<dd>0x19</b> Next Interval Count Register			(Write Only)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-generic.GIF">	
+	                                                             
+	<p>The <b>NICR</b> is a write only register that holds the clock 
+	count in 	microseconds to be 
+	loaded into the <b>ICR</b> when the <b>ICR</b> overflows (ie.. 
+	after an increment 	its value is zero) or 
+	when the <b>XFR</b> (transfer) bit of the <b>ICCS</b> is written to.
+	 As the 	<b>ICR</b> register is incremented, 
+	not decremented, the value stored in <b>NICR</b> should be set to the 
+	two's  	complement of 
+	the interval wanted.<p>
+	
+<A NAME="IPL_1A"></A>
+	<dt><b>ICR 		
+	<dd>0x1A</b> Interval Count Register				(Read Only)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-generic.GIF">	
+	                                                             
+	<p>The <B>ICR</B> is a read only register that is incremented every
+	microsecond on a 	VAX (every 
+	instruction on MACVAX) while the <B>RUN</B> bit of the <B>ICCS</B> 
+	is one. It can 	also be 
+	incremented by writing to the <B>SGL</B> (single increment)
+	 bit of the 	<B>ICCS</B>. It is loaded from 
+	the <B>NICR</B> when the <B>XFR</B> (transfer) bit of the 
+	<B>ICCS</B> is written 	to or when the <B>ICR</B> 
+	overflows (ie.. after an increment its value is zero). 
+	 An overflow will also set 	the <B>INT</B> 
+	(interrupt) bit of the <B>ICCS</B>. If the <B>INT</B> bit 
+	was already set the 	<B>ERR</B> (error) bit will be set to 
+	indicate one or more clock interrupts have been missed. If 
+	the <B>INT_ENB</B> 	(interrupt 
+	enable) bit is one, an overflow will generate an interrupt at 
+	<B>IPL 24</B>. 
+
+<A NAME="IPL_1B"></A>
+	<dt><b>TODR	
+	<dd>0x1B</b> Time of Year			(Read Only)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-generic.GIF">	
+	                                                
+	<p>The MacVAX simulator provides a Time of Year processor register using the 
+	Macintosh internal clock.  The VAX clock has a resolution of 10ms. As the 	Macintosh 
+	clock has a resolution of 1 second, the low bits of the register will always be 0.  Thus the clock will overflow in 497 days.  Note that the interval timers, above, operate on the basis that one instruction takes 1ms and they are only incremented when an instruction has been executed (i.e. they do not increment while MacVAX is halted. The <B>TODR</B> gets its time from the Macintosh clock, which is always running. <b>TODR</b> is accessed with <b>mfpr</b> #<B>TODR</B>.
+	
+</dl>
+
+</body>
+</html>

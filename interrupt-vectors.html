@@ -1,1 +1,166 @@
-<HTML><HEAD><TITLE>Interrupt Vectors</TITLE></HEAD><body><IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	<center><br><h1>Interrupt Vectors</H1><p></center>The following exception and interrupt conditions are recognized by MacVAX.<p><hr><center><TABLE border=1 cellpadding=5><TR><td><B>Vector</B> (offset from <A HREF="VAX-IPR.html#IPL_11"><B>SCBB</B></A>)</td><td><B>Name</B></td><td><B>type</B></td><TD><B>number of Parameters</B></td><TR><TD>0x00</td><TD>Passive Release</td><TD>Interrupt</td><TD>0</td><TR><TD>0x04</td><TD>Machine Check</td><TD>Abort, Fault or Trap</td><TD>on Top of stack</td><TR><TD>0x08</td><TD>Kernel Stack Not Valid</td><TD>Abort</td><TD>0</td><TR><TD>0x10</td><TD>Reserved or Privileged Instruction</td><TD>Fault</td><TD>0</td><TR><TD>0x18</td><TD>Reserved Operand</td><TD>Fault</td><TD>0</td><TR><TD>0x1C</td><TD>Reserved addressing Mode</td><TD>Fault</td><TD>0</td><TR><TD>0x20</td><TD>Access Control Violation</td><TD>Fault</td><TD>2</td><TR><TD>0x24</td><TD>Translation not valid</td><TD>Fault</td><TD>2</td><TR><TD>0x28</td><TD>Trace Pending</td><TD>Fault</td><TD>0</td><TR><TD>0x2c</td><TD>Break point</td><TD>Fault</td><TD>0</td><TR><TD>0x34</td><TD>Arithmetic</td><TD>Trap or Fault</td><TD>1</td><TR><TD>0x40</td><TD>CHMK</td><TD>Trap</td><TD>1</td><TR><TD>0x44</td><TD>CHME</td><TD>Trap</td><TD>1</td><TR><TD>0x48</td><TD>CHMS</td><TD>Trap</td><TD>1</td><TR><TD>0x4C</td><TD>CHMU</td><TD>Trap</td><TD>1</td><TR><TD>0x84</td><TD>Software Level 1</td><TD>Interrupt</td><TD>0</td><TR><TD>...</td><TD>...</td><TD>...</td><TD>...</td><TR><TD>0xBC</td>	<TD>Software level F</td><TD>Interrupt</td><TD>0</td>	<TR><TD>0xC0</td><TD>Interval Timer</td><TD>Interrupt</td><TD>0</td><TR><TD>0xE0</td><TD>MacVAX</td><TD>Interrupt</td><TD>0</td><TR><TD>0xF8</td><TD>Console Terminal Receive</td><TD>Interrupt</td><TD>0<TR><TD>0xFC</td><TD>Console Terminal Transmit</td><TD>Interrupt</td><TD>0</td></table></center><p>Exception or interrupt vectors must be long word aligned. The low two bits of a vector are used to determine the stack to be used when handling the exception or interrupt. If the low two bits are 00 the Kernel stack is used (unless the interrupt stack is already in use). If the low two bits are 01 the interrupt stack is used. If the low two bits are 10 or 11 a fault occurs.<p>
+<HTML>
+
+<HEAD>
+<TITLE>Interrupt Vectors
+</TITLE>
+</HEAD>
+<body>
+<IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	
+<center>
+<br><h1>Interrupt Vectors</H1><p>
+</center>
+The following exception and interrupt conditions are recognized by MacVAX.<p>
+<hr>
+<center>
+<TABLE border=1 cellpadding=5>
+<TR>
+<td><B>Vector</B> (offset from <A HREF="http://www.cs.auckland.ac.nz/references/macvax/VAX-IPR.html#IPL_11"><B>SCBB</B></A>)</td>
+<td><B>Name</B></td>
+<td><B>type</B></td>
+<TD><B>number of Parameters</B></td>
+
+<TR>
+<TD>0x00</td>
+<TD>Passive Release</td>
+<TD>Interrupt</td>
+<TD>0</td>
+
+<TR>
+<TD>0x04</td>
+<TD>Machine Check</td>
+<TD>Abort, Fault or Trap</td>
+<TD>on Top of stack</td>
+
+<TR>
+<TD>0x08</td>
+<TD>Kernel Stack Not Valid</td>
+<TD>Abort</td>
+<TD>0</td>
+
+<TR>
+<TD>0x10</td>
+<TD>Reserved or Privileged Instruction</td>
+<TD>Fault</td>
+<TD>0</td>
+
+<TR>
+<TD>0x18</td>
+<TD>Reserved Operand</td>
+<TD>Fault</td>
+<TD>0</td>
+
+<TR>
+<TD>0x1C</td>
+<TD>Reserved addressing Mode</td>
+<TD>Fault</td>
+<TD>0</td>
+
+<TR>
+<TD>0x20</td>
+<TD>Access Control Violation</td>
+<TD>Fault</td>
+<TD>2</td>
+
+<TR>
+<TD>0x24</td>
+<TD>Translation not valid</td>
+<TD>Fault</td>
+<TD>2</td>
+
+<TR>
+<TD>0x28</td>
+<TD>Trace Pending</td>
+<TD>Fault</td>
+<TD>0</td>
+
+<TR>
+<TD>0x2c</td>
+<TD>Break point</td>
+<TD>Fault</td>
+<TD>0</td>
+
+<TR>
+<TD>0x34</td>
+<TD>Arithmetic</td>
+<TD>Trap or Fault</td>
+<TD>1</td>
+
+<TR>
+<TD>0x40</td>
+<TD>CHMK</td>
+<TD>Trap</td>
+<TD>1</td>
+
+<TR>
+<TD>0x44</td>
+<TD>CHME</td>
+<TD>Trap</td>
+<TD>1</td>
+
+<TR>
+<TD>0x48</td>
+<TD>CHMS</td>
+<TD>Trap</td>
+<TD>1</td>
+
+<TR>
+<TD>0x4C</td>
+<TD>CHMU</td>
+<TD>Trap</td>
+<TD>1</td>
+
+<TR>
+<TD>0x84</td>
+<TD>Software Level 1</td>
+<TD>Interrupt</td>
+<TD>0</td>
+
+<TR>
+<TD>...</td>
+<TD>...</td>
+<TD>...</td>
+<TD>...</td>
+
+<TR>
+<TD>0xBC</td>	
+<TD>Software level F</td>
+<TD>Interrupt</td>
+<TD>0</td>
+	
+<TR>
+<TD>0xC0</td>
+<TD>Interval Timer</td>
+<TD>Interrupt</td>
+<TD>0</td>
+
+<TR>
+<TD>0xE0</td>
+<TD>MacVAX</td>
+<TD>Interrupt</td>
+<TD>0</td>
+
+<TR>
+<TD>0xF8</td>
+<TD>Console Terminal Receive</td>
+<TD>Interrupt</td>
+<TD>0
+
+<TR>
+<TD>0xFC</td>
+<TD>Console Terminal Transmit</td>
+<TD>Interrupt</td>
+<TD>0</td>
+</table>
+</center>
+
+<p>Exception or interrupt vectors must be long word aligned. The low two bits of a vector 
+are used to determine the stack to be used when handling the exception or interrupt. If 
+the low two bits are 00 the Kernel stack is used (unless the interrupt stack is already in 
+use). If the low two bits are 01 the interrupt stack is used. If the low two bits are 10 or 11 
+a fault occurs.<p>
+
+
+
+
+
+

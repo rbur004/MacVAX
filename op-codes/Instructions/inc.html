@@ -1,1 +1,42 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>INC Instruction</TITLE></HEAD><BODY><H2>INC Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td><b>Purpose:</b></td><td>To add 1 to an integer</td><tr>	<td><b>Format:</b></td><td>opcode sum.mx</td><tr>	<td><b>Operation:</b></td><td>sum &lt- sum + 1;</td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- sum LSS 0;<br>			Z &lt- sum EQL 0;<br>			V &lt- {integer overflow};<br>			C &lt- {carry from the most significant bit};</td><tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Overflow</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>96</td><td>INCB</td><td>Increment Byte</td>			<tr> <td>B6</td><td>INCW</td><td>Increment Word</td>			<tr> <td>D6</td><td>INCL</td><td>Increment Long</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>One is added to the sum operand and the sum operand is replaced by the result</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>Arithmetic overflow occurs if the largest positive integer is incremented. On overflow, the sum operand is replaced by the largest negative integer.	<dt>2.<dd><B>INC</B>x sum is equivalent to <B>ADD</B>x #1, sum, but is one byte shorter.</dl></td>	</table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>INC Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>INC Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td><b>Purpose:</b></td><td>To add 1 to an integer</td>
+<tr>	<td><b>Format:</b></td><td>opcode sum.mx</td>
+<tr>	<td><b>Operation:</b></td><td>sum &lt- sum + 1;</td>
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- sum LSS 0;<br>
+			Z &lt- sum EQL 0;<br>
+			V &lt- {integer overflow};<br>
+			C &lt- {carry from the most significant bit};</td>
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Overflow</td>
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>96</td><td>INCB</td><td>Increment Byte</td>
+			<tr> <td>B6</td><td>INCW</td><td>Increment Word</td>
+			<tr> <td>D6</td><td>INCL</td><td>Increment Long</td>
+			</table>
+		</td>
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>One is added to the sum operand and the sum operand is replaced by the result</td>
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>Arithmetic overflow occurs if the largest positive integer is incremented. On overflow, the sum operand is replaced by the largest negative integer.
+	<dt>2.<dd><B>INC</B>x sum is equivalent to <B>ADD</B>x #1, sum, but is one byte shorter.</dl></td>
+	
+</table>
+
+</BODY>
+
+</HTML>

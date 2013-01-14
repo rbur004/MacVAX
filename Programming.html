@@ -1,1 +1,32 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>Programming MacVAX</TITLE></HEAD><BODY><h2>Programming MacVAX</h2><ul>	<h3>Single Process Mode</h3>	<ul>		</ul>	<h3>Responsibilities of an OS</h3>	<ul>		</ul>	<h3>IO</h3>	<ul>	MacVAX has no external peripherals other than the console. This is accessed via the <a href="VAX-IPR/IPL_CONSOLE.html">console internal processor registers</a>. IO can be perform either by polling the Ready and Done bits of the console control registers or through an interrupt service routine. MacVAX simulates asyncronous I/O on output by calculating a random interval between the initiation of output and the Interrupt for IO completion. <p>The console may also be written to or read from via the XFC <A HREF="xfc/MacVAX-XFCcalls-index.html#xfc_CONSOLE">Console IO</A> calls. These calls provide a simpler environment for introductory courses. These calls do use the console registers so the effects of IO can be observed by the student.<p>Disk IO can be performed only through the XFC <A HREF="xfc/MacVAX-XFCcalls-index.html#xfc_FILE">File I/O</A> calls. These provide read/write access to files on the Macintosh's disk(s). It was intended to provide a more realistic disk device which would have to be accessed via a user written device driver, but this has yet to eventuate.	</ul></ul></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>Programming MacVAX
+</TITLE>
+</HEAD>
+
+<BODY>
+
+<h2>Programming MacVAX</h2>
+<ul>
+	<h3>Single Process Mode</h3>
+	<ul>
+	
+	</ul>
+	<h3>Responsibilities of an OS</h3>
+	<ul>
+	
+	</ul>
+	<h3>IO</h3>
+	<ul>
+	MacVAX has no external peripherals other than the console. This is accessed via the <a href="VAX-IPR/IPL_CONSOLE.html">console internal processor registers</a>. IO can be perform either by polling the Ready and Done bits of the console control registers or through an interrupt service routine. MacVAX simulates asyncronous I/O on output by calculating a random interval between the initiation of output and the Interrupt for IO completion. 
+<p>
+The console may also be written to or read from via the XFC <A HREF="xfc/MacVAX-XFCcalls-index.html#xfc_CONSOLE">Console IO</A> calls. These calls provide a simpler environment for introductory courses. These calls do use the console registers so the effects of IO can be observed by the student.
+<p>
+Disk IO can be performed only through the XFC <A HREF="xfc/MacVAX-XFCcalls-index.html#xfc_FILE">File I/O</A> calls. These provide read/write access to files on the Macintosh's disk(s). It was intended to provide a more realistic disk device which would have to be accessed via a user written device driver, but this has yet to eventuate.
+	</ul>
+</ul>
+</BODY>
+
+</HTML>

@@ -1,1 +1,56 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>BISPSW and BICPSW Instruction</TITLE></HEAD><BODY><H2>BISPSW and BICPSW Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td valign=top><b>Purpose:</b></td><td>To set or clear trap enables</td><tr>	<td valign=top><b>Format:</b></td><td>opcode mask.rw</td><tr>	<td valign=top><b>Operation:</b></td><td>		<b>BISPSW</b> PSW &lt- PSW OR mask;<br>		<b>BICPSW</b> PSW &lt- PSW AND NOT mask;</td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td><dl>		<dt><b>BISPSW</b>		<dd>N &lt- N OR mask&lt3&gt;<br>			Z &lt- Z OR mask&lt2&gt;<br>			V &lt- V OR mask&lt1&gt;<br>			C &lt- C OR mask&lt0&gt;		<dt><b>BICPSW</b>		<dd>N &lt- N AND NOT mask&lt3&gt;<br>			Z &lt- Z AND NOT mask&lt2&gt;<br>			V &lt- V AND NOT mask&lt1&gt;<br>			C &lt- C AND NOT mask&lt0&gt;		</dl></td><tr>	<td valign=top><B>Exceptions:</B></td><td>Reserved Operand </td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>B8</td><td>BISPSW</td><td>Bit Set PSW</td>			<tr> <td>B9</td><td>BICPSW</td><td>Bit Clear PSW</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>On BISPSW, the PSW is ORed with the 16 bit mask operand and the PSW is replaced by the result.<p>On BICPSW, the PSW is ANDed with the ones complement of the 16 bit mask operand and the PSW is replaced by the result.</td><tr>	<td valign=top><b>Notes:</b></td>		<td>A reserved operand fault occurs if the mask bit 15:8 are not zero. On a reserved operand fault, the PSW is not affected.</td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>BISPSW and BICPSW Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>BISPSW and BICPSW Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td valign=top><b>Purpose:</b></td><td>To set or clear trap enables</td>
+
+<tr>	<td valign=top><b>Format:</b></td><td>opcode mask.rw</td>
+
+<tr>	<td valign=top><b>Operation:</b></td><td>
+		<b>BISPSW</b> PSW &lt- PSW OR mask;<br>
+		<b>BICPSW</b> PSW &lt- PSW AND NOT mask;</td>
+
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td><dl>
+		<dt><b>BISPSW</b>
+		<dd>N &lt- N OR mask&lt3&gt;<br>
+			Z &lt- Z OR mask&lt2&gt;<br>
+			V &lt- V OR mask&lt1&gt;<br>
+			C &lt- C OR mask&lt0&gt;
+		<dt><b>BICPSW</b>
+		<dd>N &lt- N AND NOT mask&lt3&gt;<br>
+			Z &lt- Z AND NOT mask&lt2&gt;<br>
+			V &lt- V AND NOT mask&lt1&gt;<br>
+			C &lt- C AND NOT mask&lt0&gt;
+		</dl></td>
+
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Reserved Operand </td>
+
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>B8</td><td>BISPSW</td><td>Bit Set PSW</td>
+			<tr> <td>B9</td><td>BICPSW</td><td>Bit Clear PSW</td>
+			</table>
+		</td>
+
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>On BISPSW, the PSW is ORed with the 16 bit mask operand and the PSW is replaced by the result.<p>
+On BICPSW, the PSW is ANDed with the ones complement of the 16 bit mask operand and the PSW is replaced by the result.</td>
+
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td>A reserved operand fault occurs if the mask bit 15:8 are not zero. On a reserved operand fault, the PSW is not affected.</td>
+</table>
+
+</BODY>
+
+</HTML>

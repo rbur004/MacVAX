@@ -1,1 +1,44 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>TST Instruction</TITLE></HEAD><BODY><H2>TST Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td><b>Purpose:</b></td><td>Arithmetic compare of a scaler quantity to 0</td><tr>	<td><b>Format:</b></td><td>opcode src.rx</td><tr>	<td><b>Operation:</b></td><td>src compared to  0;</td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- src LSS 0;<br>			Z &lt- src EQL 0;<br>			V &lt- 0;<br>			C &lt- 0;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>None (Integer);<br>							Reserved Operand (Floating Point)</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>95</td><td>TSTB</td><td>Test Byte</td>			<tr> <td>B5</td><td>TSTW</td><td>Test Word</td>			<tr> <td>D5</td><td>TSTL</td><td>Test Long</td>			<tr> <td>53</td><td>TSTF</td><td>Test Float</td>			<tr> <td>73</td><td>TSTD</td><td>Test Double</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>The source operand is compared with 0. The source operand is unaffected. The only action is to affect the codition codes.</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd><b>TST</b>x src is equivalent to <b>CMP</b>x src, #0, but is one byte shorter.		<dt>2.<dd>On a floating reserved operand fault, the condition codes are unpredictable.</dl></td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>TST Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>TST Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td><b>Purpose:</b></td><td>Arithmetic compare of a scaler quantity to 0</td>
+<tr>	<td><b>Format:</b></td><td>opcode src.rx</td>
+<tr>	<td><b>Operation:</b></td><td>src compared to  0;</td>
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- src LSS 0;<br>
+			Z &lt- src EQL 0;<br>
+			V &lt- 0;<br>
+			C &lt- 0;</td>
+<tr>	<td valign=top><B>Exceptions:</B></td><td>None (Integer);<br>
+							Reserved Operand (Floating Point)</td>
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>95</td><td>TSTB</td><td>Test Byte</td>
+			<tr> <td>B5</td><td>TSTW</td><td>Test Word</td>
+			<tr> <td>D5</td><td>TSTL</td><td>Test Long</td>
+			<tr> <td>53</td><td>TSTF</td><td>Test Float</td>
+			<tr> <td>73</td><td>TSTD</td><td>Test Double</td>
+			</table>
+		</td>
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>The source operand is compared with 0. The source operand is unaffected. The only action is to affect the codition codes.</td>
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd><b>TST</b>x src is equivalent to <b>CMP</b>x src, #0, but is one byte shorter.
+		<dt>2.<dd>On a floating reserved operand fault, the condition codes are unpredictable.</dl></td>
+</table>
+
+</BODY>
+
+</HTML>

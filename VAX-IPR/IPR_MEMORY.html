@@ -1,1 +1,85 @@
-<html><head><title>Internal Processor Registers</title></head><body><IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	<center><h1>VAX Internal Processor Registers<br>Virtual Memory Registers</h1></center><br><p>These registers are accessed using the <b>mtpr</b> and <b>mfpr</b> instructions.<p><hr><!-- -------------------------------------------------------------- --><dl compact><A NAME="IPR_8"></A>	<dt><b>P0BR 	<dd>0x8</b> Process Space <b>P0</b> Base Register		(Read / Write)	<p><IMG ALIGN=bottom SRC="pics/IPR-P0BR.GIF">	<p>                                                          	<b>POBR</b> holds the virtual address of the current processes 	<b>P0</b> page 	table entries. 	The address must be long aligned (the low 2 bits must be 00) and 	must be in 	system space 	( address >= 0x80000000 and address < 0xC0000000 ).<p><A NAME="IPR_9"></A>	<dt><b>P0LR 	<dd>0x9</b> Process Space <b>P0</b> Length Register	(Read / Write)	<p><IMG ALIGN=bottom SRC="pics/IPR-P0LR.GIF">	<p>                                                         	The <b>P0LR</b> contains the size of the current processes <b>P0</b> 	page table 	in long words.	<p><A NAME="IPR_A">	</A>		<dt><b>P1BR 		<dd>0xA</b> Process Space <b>P1</b> Base Register		(Read / Write)	<p><IMG ALIGN=bottom SRC="pics/IPR-P0BR.GIF">   <p>                                                        	<b>P1BR</b> holds the virtual address of the current processes 	<b>P1</b> page 	table	 entries. The 	address must be long aligned (the low 2 bits must be 00) and  must have a value 	between 0x7f80000 and 0xBF000000. This is to ensure the page table entries are 	always in system space.<p>	<A NAME="IPR_B"></A>		<dt><b>P1LR 		<dd>0xB</b> Process Space <b>P1</b> Length Register	(Read / Write)<p>	<IMG ALIGN=bottom SRC="pics/IPR-P0LR.GIF"><p>                                                      	The <b>P1LR</b> contains the number of unused page table entries 	(each <b>PTE</b> is a long word) of 	the current processes <b>P1</b> page table.<p>	<A NAME="IPR_C"></A>		<dt><b>SBR 			<dd>0xC</b> System Base Register			(Read / Write)<p>	<IMG ALIGN=bottom SRC="pics/IPR-SBR.GIF"><p>                                                        	<b>SBR</b> holds the Real address of the system page table entries. 	The address must be long aligned (the low 2 bits must be 00).<p>	<A NAME="IPR_D"></A>	<dt> <b>SLR 			<dd>0xD</b> System Length Register			(Read / Write)<p>	<IMG ALIGN=bottom SRC="pics/IPR-P0LR.GIF"><p>	The <b>SLR</b> contains the size of the System page table in long words.<p>	<A NAME="IPR_38"></A>	<dt><b>MAPEN		<dd>0x38</b> Memory Management Enable		(Read / Write)<p>	<IMG ALIGN=bottom SRC="pics/IPR-MAPEN.GIF"><p>	<ul>                                                           	<b>E</b>	= Enable bit		(Read / Write)<p>	</ul>	Setting <b>bit 0</b> of  the <b>MAPEN</b> register enables memory management. 	MacVAX sets this bit when resetting or loading a program.<p></dl></body></html>
+<html>
+<head>
+<title>Internal Processor Registers</title>
+</head>
+
+<body>
+
+<IMG ALIGN=left SRC="pics/MacVAX-Icon.GIF">	
+
+<center><h1>VAX Internal Processor Registers<br>
+Virtual Memory Registers</h1></center><br>
+
+<p>These registers are accessed using the <b>mtpr</b> and <b>mfpr</b> instructions.<p>
+
+<hr><!-- -------------------------------------------------------------- -->
+<dl compact>
+<A NAME="IPR_8"></A>
+
+	<dt><b>P0BR 
+	<dd>0x8</b> Process Space <b>P0</b> Base Register		(Read / Write)
+	<p><IMG ALIGN=bottom SRC="pics/IPR-P0BR.GIF">
+	<p>                                                          
+	<b>POBR</b> holds the virtual address of the current processes 
+	<b>P0</b> page 	table entries. 
+	The address must be long aligned (the low 2 bits must be 00) and 
+	must be in 	system space 
+	( address >= 0x80000000 and address < 0xC0000000 ).<p>
+
+<A NAME="IPR_9"></A>
+	<dt><b>P0LR 
+	<dd>0x9</b> Process Space <b>P0</b> Length Register	(Read / Write)
+	<p><IMG ALIGN=bottom SRC="pics/IPR-P0LR.GIF">
+	<p>                                                         
+	The <b>P0LR</b> contains the size of the current processes <b>P0</b> 
+	page table 	in long words.
+	<p>
+
+<A NAME="IPR_A">	</A>
+	
+	<dt><b>P1BR 	
+	<dd>0xA</b> Process Space <b>P1</b> Base Register		(Read / Write)
+	<p><IMG ALIGN=bottom SRC="pics/IPR-P0BR.GIF">   <p>                                                        
+	<b>P1BR</b> holds the virtual address of the current processes 
+	<b>P1</b> page 	table
+	 entries. The 
+	address must be long aligned (the low 2 bits must be 00) and  must have a value 
+	between 0x7f80000 and 0xBF000000. This is to ensure the page table entries are 
+	always in system space.<p>
+	
+<A NAME="IPR_B"></A>
+	
+	<dt><b>P1LR 	
+	<dd>0xB</b> Process Space <b>P1</b> Length Register	(Read / Write)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-P0LR.GIF"><p>                                                      
+	The <b>P1LR</b> contains the number of unused page table entries 
+	(each <b>PTE</b> is a long word) of 
+	the current processes <b>P1</b> page table.<p>
+	
+<A NAME="IPR_C"></A>
+	
+	<dt><b>SBR 		
+	<dd>0xC</b> System Base Register			(Read / Write)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-SBR.GIF"><p>                                                        
+	<b>SBR</b> holds the Real address of the system page table entries. 
+	The address must be long aligned (the low 2 bits must be 00).<p>
+	
+<A NAME="IPR_D"></A>
+	<dt> <b>SLR 		
+	<dd>0xD</b> System Length Register			(Read / Write)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-P0LR.GIF"><p>
+	The <b>SLR</b> contains the size of the System page table in long words.<p>
+	
+<A NAME="IPR_38"></A>
+	<dt><b>MAPEN	
+	<dd>0x38</b> Memory Management Enable		(Read / Write)<p>
+	<IMG ALIGN=bottom SRC="pics/IPR-MAPEN.GIF"><p>
+	<ul>                                                           
+	<b>E</b>	= Enable bit		(Read / Write)<p>
+	</ul>
+	Setting <b>bit 0</b> of  the <b>MAPEN</b> register enables memory management. 
+	MacVAX sets this bit when resetting or loading a program.<p>
+</dl>
+
+</body>
+</html>

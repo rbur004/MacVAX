@@ -1,1 +1,94 @@
-<HTML><HEAD><TITLE>MACVAX XFC Calls System</TITLE></HEAD><BODY><!-- --------------------------------------------------------- --><A NAME="xfc_INTRODUCTION"></A><IMG ALIGN=left SRC="../pics/MacVAX-Icon.GIF">	<center><h1>MacVAX XFC (system) Calls</h1></center><br><p><hr><!-- --------------------------------------------------------- --><A NAME="xfc_SYSTEM"><H2>SYSTEM XFC's</H2></A><ul>These <b>xfc</b> calls are only available to Kernel mode processes.  A number of them are only available to the VAX OS itself. The VAX OS must notify MacVAX that it is present and is willing to be responsible for the handling of the following functions: ... by executing 	&quot<b>xfc #SYSTEM</b>&quot<p><A NAME="xfc_128"></A><dl><dt><B>XFC #SYSTEM (128)</B><dd>The <B>SYSTEM</B> <B>xfc</B> tells MacVAX that an operating system is present. If this call is not made then some of the following <B>SYSTEM</B> <B>XFC</B>'s will generate a &quotReserved or Privileged Instruction&quot fault. Once this call is made the operating system accepts responsibility for handling the  &quotLoad Process&quot, &quotTerminate Process&quot, &quotShutdown System&quot and &quotReset Process&quot menu items.  <p><A NAME="xfc_129"></A><dt><B>XFC #REBOOT (129)</B><dd><B>REBOOT</B> is exactly he same as selecting &quotLoad Boot Image&quot from File menu.<p><A NAME="xfc_130"></A><dt><B>XFC #CREATE_USER_SYMBOL_TABLE (130)</B><dd><B>CREATE_USER_SYMBOL_TABLE</B> tells MacVAX to read and process the symbol table for the file specified by the File Descriptor passed in <B>R0</B>. MacVAX builds a memory copy of the symbol table and returns a process descriptor to the VAX system in <B>R1</B>. This process descriptor should be stored in the long word following the <B>PCB</B> for the process associated with the file descriptor. If an error occurred while reading the symbol table an error code (a negative number) will be returned in <B>R1</B> instead of the process descriptor. This value should also be stored at the end of the <B>PCB</B>, if the system intends to continue with the process, given no symbol table info will be available for it.<p><A NAME="xfc_131"></A><dt><B>XFC #CREATE_SYS_SYMBOL_TABLE (131)</B><dd><B>CREATE_SYS_SYMBOL_TABLE</B>  tells MacVAX to read and process the symbol table for the file specified by the File Descriptor passed in <B>R0</B>. MacVAX builds a memory copy of the symbol table and returns a process descriptor to the VAX system in <B>R1</B>. The process descriptor returned will always be <B>0</B> ( the system symbol table) unless an error occurred while reading or processing the symbol table.  If an error occurred while reading the symbol table an error code (a negative number) will be returned in <B>R1</B> instead of the process descriptor. <B>CREATE_SYS_SYMBOL_TABLE</B>  differs from <B>CREATE_USER_SYMBOL_TABLE</B> in that the return process descriptor is always <B>0</B>, and need not be saved by the VAX system, and in that the symbol table will be used immediately for <B>S</B> space.<p><A NAME="xfc_138"></A><dt><B>XFC #DUP_USER_SYMBOL_TABLE (138)</B><dd>Process descriptor in <B>R0</B>. Returns a new process descriptor in <B>R1</B>.Tells MACVAX to use the symbol table info for <B>P0</B> and <B>P1</B> symbolsby copying references from an existing process descriptor<p><A NAME="xfc_132"></A><dt><B>XFC #FREE_SYMBOL_TABLE (132)</B><dd><B>FREE_SYMBOL_TABLE</B>  tells MACVAX to forget the symbol table info for the process specified by the Process descriptor in <B>R0</B>. The memory taken by the symbol table is freed. If the  Process descriptor is that of the current <B>P0</B> process it will loose all displayed symbol table information. A result code of <B>0</B> is returned in <B>R1</B> if the process descriptor was valid, or<B> -1</B> if it was invalid.<p><A NAME="xfc_133"></A><dt><B>XFC #USE_USER_SYMBOL_TABLE (133)</B><dd><B>USE_USER_SYMBOL_TABLE</B>  Tells MACVAX to use the symbol table info specified by the Process descriptor in <B>R0</B> for <B>P0</B> and <B>P1</B> symbols. A result code of <B>0</B> is returned in <B>R1</B> if the process descriptor was valid, or <B>-1</B> if it was invalid. This is equivalent to a <B>mtpr</B> #<B>MVPID</B> except the <B>mtpr</B> does not produce a result code. Both this call and the <B>mtpr</B> should not normally be needed as the <B>ldpctx</B> and <B>svpctx</B> calls will load and save the <B>IPR MVPID</B>.<p><A NAME="xfc_134"></A><dt><B>XFC #GET_FILENAME_PD (134)</B><dd><B>GET_FILENAME_PD</B> returns the directory reference number and the name of the file associated with the process descriptor passed in <B>R0</B>. It allows a VAX system to easily reopen the file when reseting the process when the user selects the Reset Process menu item. The directory reference number and the name of the file are written to the VAX virtual memory location specified by <B>R1</B> in the form of a <A href="#xfc_FILENAME_STRUCTURE">filename structure</a> as described above.<p><A NAME="xfc_135"></A><dt><B>XFC #DISPLAY_DIALOG (135)</B><dd><B>DISPLAY_DIALOG</B> displays the pascal string pointed to by <B>R0</B> in a dialog box.<br>There is no return code.	<p><A NAME="xfc_136"></A><dt><B>XFC #CLEAR_WATCHPOINTS (136)</B><dd>The OS can clear watchpoints in a specified address range by specifying the Virtual address of the start of the range in <B>R0</B> and the length in bytes in <B>R1</B>.<p><A NAME="xfc_137"></A><dt><B>XFC #SET_WATCHPOINTS (137)</B><dd>The OS can set watchpoints in a specified address range by specifying the Virtual address of the start of the range in <B>R0</B> and the length in bytes in <B>R1</B>.</dl></ul><!-- --------------------------------------------------------- --></BODY></HTML>
+<HTML>
+
+<HEAD>
+<TITLE>MACVAX XFC Calls System
+</TITLE>
+</HEAD>
+
+<BODY>
+<!-- --------------------------------------------------------- -->
+<A NAME="xfc_INTRODUCTION"></A>
+<IMG ALIGN=left SRC="../pics/MacVAX-Icon.GIF">	
+
+<center><h1>MacVAX XFC (system) Calls</h1></center><br>
+
+<p>
+
+<hr><!-- --------------------------------------------------------- -->
+<A NAME="xfc_SYSTEM"><H2>SYSTEM XFC's</H2></A>
+<ul>
+These <b>xfc</b> calls are only available to Kernel mode processes.  A number of them are only available to the VAX OS itself. The VAX OS must notify MacVAX that it is present and is willing to be responsible for the handling of the following functions: ... by executing 
+	&quot<b>xfc #SYSTEM</b>&quot
+
+<p>
+<A NAME="xfc_128"></A>
+<dl>
+<dt><B>XFC #SYSTEM (128)</B>
+
+<dd>The <B>SYSTEM</B> <B>xfc</B> tells MacVAX that an operating system is present. If this call is not made then some of the following <B>SYSTEM</B> <B>XFC</B>'s will generate a &quotReserved or Privileged Instruction&quot fault. Once this call is made the operating system accepts responsibility for handling the  &quotLoad Process&quot, &quotTerminate Process&quot, &quotShutdown System&quot and &quotReset Process&quot menu items.  
+
+<p>
+<A NAME="xfc_129"></A>
+<dt><B>XFC #REBOOT (129)</B>
+<dd><B>REBOOT</B> is exactly he same as selecting &quotLoad Boot Image&quot from File menu.
+
+<p>
+<A NAME="xfc_130"></A>
+<dt><B>XFC #CREATE_USER_SYMBOL_TABLE (130)</B>
+
+<dd><B>CREATE_USER_SYMBOL_TABLE</B> tells MacVAX to read and process the symbol table for the file specified by the File Descriptor passed in <B>R0</B>. MacVAX builds a memory copy of the symbol table and returns a process descriptor to the VAX system in <B>R1</B>. This process descriptor should be stored in the long word following the <B>PCB</B> for the process associated with the file descriptor. If an error occurred while reading the symbol table an error code (a negative number) will be returned in <B>R1</B> instead of the process descriptor. This value should also be stored at the end of the <B>PCB</B>, if the system intends to continue with the process, given no symbol table info will be available for it.
+
+<p>
+<A NAME="xfc_131"></A>
+<dt><B>XFC #CREATE_SYS_SYMBOL_TABLE (131)</B>
+
+<dd><B>CREATE_SYS_SYMBOL_TABLE</B>  tells MacVAX to read and process the symbol table for the file specified by the File Descriptor passed in <B>R0</B>. MacVAX builds a memory copy of the symbol table and returns a process descriptor to the VAX system in <B>R1</B>. The process descriptor returned will always be <B>0</B> ( the system symbol table) unless an error occurred while reading or processing the symbol table.  If an error occurred while reading the symbol table an error code (a negative number) will be returned in <B>R1</B> instead of the process descriptor. 
+<B>CREATE_SYS_SYMBOL_TABLE</B>  differs from <B>CREATE_USER_SYMBOL_TABLE</B> in that the return process descriptor is always <B>0</B>, and need not be saved by the VAX system, and in that the symbol table will be used immediately for <B>S</B> space.
+
+<p>
+<A NAME="xfc_138"></A>
+<dt><B>XFC #DUP_USER_SYMBOL_TABLE (138)</B>
+<dd>Process descriptor in <B>R0</B>. Returns a new process descriptor in <B>R1</B>.
+Tells MACVAX to use the symbol table info for <B>P0</B> and <B>P1</B> symbols
+by copying references from an existing process descriptor
+
+<p>
+<A NAME="xfc_132"></A>
+<dt><B>XFC #FREE_SYMBOL_TABLE (132)</B>
+
+<dd><B>FREE_SYMBOL_TABLE</B>  tells MACVAX to forget the symbol table info for the process specified by the Process descriptor in <B>R0</B>. The memory taken by the symbol table is freed. If the  Process descriptor is that of the current <B>P0</B> process it will loose all displayed symbol table information. A result code of <B>0</B> is returned in <B>R1</B> if the process descriptor was valid, or<B> -1</B> if it was invalid.
+
+<p>
+<A NAME="xfc_133"></A>
+<dt><B>XFC #USE_USER_SYMBOL_TABLE (133)</B>
+
+<dd><B>USE_USER_SYMBOL_TABLE</B>  Tells MACVAX to use the symbol table info specified by the Process descriptor in <B>R0</B> for <B>P0</B> and <B>P1</B> symbols. A result code of <B>0</B> is returned in <B>R1</B> if the process descriptor was valid, or <B>-1</B> if it was invalid. This is equivalent to a <B>mtpr</B> #<B>MVPID</B> except the <B>mtpr</B> does not produce a result code. Both this call and the <B>mtpr</B> should not normally be needed as the <B>ldpctx</B> and <B>svpctx</B> calls will load and save the <B>IPR MVPID</B>.
+
+<p>
+<A NAME="xfc_134"></A>
+<dt><B>XFC #GET_FILENAME_PD (134)</B>
+
+<dd><B>GET_FILENAME_PD</B> returns the directory reference number and the name of the file associated with the process descriptor passed in <B>R0</B>. It allows a VAX system to easily reopen the file when reseting the process when the user selects the Reset Process menu item. The directory reference number and the name of the file are written to the VAX virtual memory location specified by <B>R1</B> in the form of a <A href="System.html#xfc_FILENAME_STRUCTURE">filename structure</a> as described above.
+
+<p>
+<A NAME="xfc_135"></A>
+<dt><B>XFC #DISPLAY_DIALOG (135)</B>
+
+<dd><B>DISPLAY_DIALOG</B> displays the pascal string pointed to by <B>R0</B> in a dialog box.<br>
+There is no return code.
+	
+<p>
+<A NAME="xfc_136"></A>
+<dt><B>XFC #CLEAR_WATCHPOINTS (136)</B>
+<dd>The OS can clear watchpoints in a specified address range by specifying the Virtual address of the start of the range in <B>R0</B> and the length in bytes in <B>R1</B>.
+
+<p>
+<A NAME="xfc_137"></A>
+<dt><B>XFC #SET_WATCHPOINTS (137)</B>
+<dd>The OS can set watchpoints in a specified address range by specifying the Virtual address of the start of the range in <B>R0</B> and the length in bytes in <B>R1</B>.
+
+</dl>
+</ul>
+<!-- --------------------------------------------------------- -->
+</BODY>
+</HTML>

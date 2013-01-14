@@ -1,1 +1,76 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><title> Vax Opcodes: Convert Instructions</title></head><BODY><h2>Convert Instructions</h2><ul><p>	<A HREF="Instructions/cvt.html"><B>CVTBL</B></A>	Convert Byte to Long (sign extend)<br>	<A HREF="Instructions/cvt.html"><B>CVTBW</B></A>	Convert Byte to Word (sign extend)<br>	<A HREF="Instructions/cvt.html"><B>CVTWB</B></A>	Convert Word to Byte (sign extend)<br>	<A HREF="Instructions/cvt.html"><B>CVTWL</B></A>	Convert Word to Long (sign extend)<br>	<A HREF="Instructions/cvt.html"><B>CVTLB</B></A>	Convert Long to Byte (sign extend)<br>	<A HREF="Instructions/cvt.html"><B>CVTLW</B></A>	Convert Long to Word (sign extend)<br><p>	<A HREF="Instructions/movz.html"><B>MOVZBL</B></A>	Move Byte to Long, zero extending (unsigned convert)<br>	<A HREF="Instructions/movz.html"><B>MOVZBW</B></A>	Move Byte to Word, zero extending (unsigned convert)<br>	<A HREF="Instructions/movz.html"><B>MOVZWL</B></A>	Move word to long, zero extending (unsigned convert)<br><p>	<A HREF="Instructions/cvt.html"><B>CVTBF</B></A>		Convert Byte to Float<br>	<A HREF="Instructions/cvt.html"><B>CVTFB</B></A>		Convert Float to Byte<br>	<A HREF="Instructions/cvt.html"><B>CVTFL</B></A>		Convert Float (truncated) to Long<br>	<A HREF="Instructions/cvt.html"><B>CVTFW</B></A>		Convert Float to Word<br>	<A HREF="Instructions/cvt.html"><B>CVTLF</B></A>		Convert Long to Float<br>	<A HREF="Instructions/cvt.html"><B>CVTRFL</B></A>		Convert Float (rounded) to Long<br> 	<A HREF="Instructions/cvt.html"><B>CVTWF</B></A>		Convet Word to Float<br><p>	<A HREF="Instructions/cvt.html"><B>CVTBD</B></A>	Convert Byte to Double Float <b>omitted</b><br>	<A HREF="Instructions/cvt.html"><B>CVTDB</B></A>	Convert Double Float to Byte <b>omitted</b><br>	<A HREF="Instructions/cvt.html"><B>CVTDF</B></A>	Convert Double Float to Float <b>omitted</b><br>	<A HREF="Instructions/cvt.html"><B>CVTDL</B></A>	Conver Double Float (truncated) to Long <b>omitted</b><br>	<A HREF="Instructions/cvt.html"><B>CVTDW</B></A>	Convert Double Float to Word <b>omitted</b><br>	<A HREF="Instructions/cvt.html"><B>CVTFD</B></A>	Convert Float to Double Float <b>omitted</b><br>	<A HREF="Instructions/cvt.html"><B>CVTLD</B></A>	Convert Long to Double Float <b>omitted</b><br>	<A HREF="Instructions/cvt.html"><B>CVTRDL</B></A>	Convert Double Float (rounded) to Long <b>omitted</b><br>	<A HREF="Instructions/cvt.html"><B>CVTWD</B></A>	Convert Word to Double Float <b>omitted</b><br><p>	CVTBG	Convert Byte to G Float <b>omitted</b><br>	CVTFG	Convert Float to G Float <b>omitted</b><br>	CVTGB	Convert G Float to Byte <b>omitted</b><br>	CVTGF	Convert G Float to Float <b>omitted</b><br>	CVTGL	Convert G Float to Long <b>omitted</b><br>	CVTGW	Convert G Float to Word <b>omitted</b><br>	CVTLG	Convert Long to G Float <b>omitted</b><br>	CVTRGL	Convert G Float (rounded) to Long <b>omitted</b><br>	CVTWG	Convert Word to G Float <b>omitted</b><br><p>	CVTBH		Convert Byte to H Float <b>omitted</b><br>	CVTDH		Convert Double Float to H Float <b>omitted</b><br>	CVTFH		Convert Float to H Float <b>omitted</b><br>	CVTGH		Convert G Float to H Float <b>omitted</b><br>	CVTHB		Convert H Float to Byte <b>omitted</b><br>	CVTHD		Convert H Float to Double Float <b>omitted</b><br>	CVTHF		Convert H Float to Float <b>omitted</b><br>	CVTHG		Convert H Float to G Float <b>omitted</b><br>	CVTHL		Convert H Float to Long <b>omitted</b><br>	CVTHW		Convert H Float to Word <b>omitted</b><br>	CVTLH		Convert Long to H Float <b>omitted</b><br>	CVTRHL		Convert H Float (rounded) to Long <b>omitted</b><br>	CVTWH		Convert Word to H Float <b>omitted</b><br><p>	CVTLP	Convert Long to Packed <b>omitted</b><br>	CVTPL	Convert Packed to Long <b>omitted</b><br>	CVTPT	Convert packed to Trailing Numeric <b>omitted</b><br>	CVTTP	Convert Trailing Numeric to Packed <b>omitted</b><br>	CVTPS	Convert Packed to Leading Separate Numeric <b>omitted</b><br>	CVTSP	Convert Leading Separarte Numeric to Packed <b>omitted</b><br></ul></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<title> Vax Opcodes: Convert Instructions</title>
+</head>
+
+<BODY>
+
+<h2>Convert Instructions</h2>
+<ul>
+<p>
+	<A HREF="Instructions/cvt.html"><B>CVTBL</B></A>	Convert Byte to Long (sign extend)<br>
+	<A HREF="Instructions/cvt.html"><B>CVTBW</B></A>	Convert Byte to Word (sign extend)<br>
+	<A HREF="Instructions/cvt.html"><B>CVTWB</B></A>	Convert Word to Byte (sign extend)<br>
+	<A HREF="Instructions/cvt.html"><B>CVTWL</B></A>	Convert Word to Long (sign extend)<br>
+	<A HREF="Instructions/cvt.html"><B>CVTLB</B></A>	Convert Long to Byte (sign extend)<br>
+	<A HREF="Instructions/cvt.html"><B>CVTLW</B></A>	Convert Long to Word (sign extend)<br>
+<p>
+	<A HREF="Instructions/movz.html"><B>MOVZBL</B></A>	Move Byte to Long, zero extending (unsigned convert)<br>
+	<A HREF="Instructions/movz.html"><B>MOVZBW</B></A>	Move Byte to Word, zero extending (unsigned convert)<br>
+	<A HREF="Instructions/movz.html"><B>MOVZWL</B></A>	Move word to long, zero extending (unsigned convert)<br>
+<p>
+	<A HREF="Instructions/cvt.html"><B>CVTBF</B></A>		Convert Byte to Float<br>
+	<A HREF="Instructions/cvt.html"><B>CVTFB</B></A>		Convert Float to Byte<br>
+	<A HREF="Instructions/cvt.html"><B>CVTFL</B></A>		Convert Float (truncated) to Long<br>
+	<A HREF="Instructions/cvt.html"><B>CVTFW</B></A>		Convert Float to Word<br>
+	<A HREF="Instructions/cvt.html"><B>CVTLF</B></A>		Convert Long to Float<br>
+	<A HREF="Instructions/cvt.html"><B>CVTRFL</B></A>		Convert Float (rounded) to Long<br> 
+	<A HREF="Instructions/cvt.html"><B>CVTWF</B></A>		Convet Word to Float<br>
+<p>
+	<A HREF="Instructions/cvt.html"><B>CVTBD</B></A>	Convert Byte to Double Float <b>omitted</b><br>
+	<A HREF="Instructions/cvt.html"><B>CVTDB</B></A>	Convert Double Float to Byte <b>omitted</b><br>
+	<A HREF="Instructions/cvt.html"><B>CVTDF</B></A>	Convert Double Float to Float <b>omitted</b><br>
+	<A HREF="Instructions/cvt.html"><B>CVTDL</B></A>	Conver Double Float (truncated) to Long <b>omitted</b><br>
+	<A HREF="Instructions/cvt.html"><B>CVTDW</B></A>	Convert Double Float to Word <b>omitted</b><br>
+	<A HREF="Instructions/cvt.html"><B>CVTFD</B></A>	Convert Float to Double Float <b>omitted</b><br>
+	<A HREF="Instructions/cvt.html"><B>CVTLD</B></A>	Convert Long to Double Float <b>omitted</b><br>
+	<A HREF="Instructions/cvt.html"><B>CVTRDL</B></A>	Convert Double Float (rounded) to Long <b>omitted</b><br>
+	<A HREF="Instructions/cvt.html"><B>CVTWD</B></A>	Convert Word to Double Float <b>omitted</b><br>
+<p>
+	CVTBG	Convert Byte to G Float <b>omitted</b><br>
+	CVTFG	Convert Float to G Float <b>omitted</b><br>
+	CVTGB	Convert G Float to Byte <b>omitted</b><br>
+	CVTGF	Convert G Float to Float <b>omitted</b><br>
+	CVTGL	Convert G Float to Long <b>omitted</b><br>
+	CVTGW	Convert G Float to Word <b>omitted</b><br>
+	CVTLG	Convert Long to G Float <b>omitted</b><br>
+	CVTRGL	Convert G Float (rounded) to Long <b>omitted</b><br>
+	CVTWG	Convert Word to G Float <b>omitted</b><br>
+<p>
+	CVTBH		Convert Byte to H Float <b>omitted</b><br>
+	CVTDH		Convert Double Float to H Float <b>omitted</b><br>
+	CVTFH		Convert Float to H Float <b>omitted</b><br>
+	CVTGH		Convert G Float to H Float <b>omitted</b><br>
+	CVTHB		Convert H Float to Byte <b>omitted</b><br>
+	CVTHD		Convert H Float to Double Float <b>omitted</b><br>
+	CVTHF		Convert H Float to Float <b>omitted</b><br>
+	CVTHG		Convert H Float to G Float <b>omitted</b><br>
+	CVTHL		Convert H Float to Long <b>omitted</b><br>
+	CVTHW		Convert H Float to Word <b>omitted</b><br>
+	CVTLH		Convert Long to H Float <b>omitted</b><br>
+	CVTRHL		Convert H Float (rounded) to Long <b>omitted</b><br>
+	CVTWH		Convert Word to H Float <b>omitted</b><br>
+<p>
+	CVTLP	Convert Long to Packed <b>omitted</b><br>
+	CVTPL	Convert Packed to Long <b>omitted</b><br>
+	CVTPT	Convert packed to Trailing Numeric <b>omitted</b><br>
+	CVTTP	Convert Trailing Numeric to Packed <b>omitted</b><br>
+	CVTPS	Convert Packed to Leading Separate Numeric <b>omitted</b><br>
+	CVTSP	Convert Leading Separarte Numeric to Packed <b>omitted</b><br>
+</ul>
+
+</BODY>
+
+</HTML>

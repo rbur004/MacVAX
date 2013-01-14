@@ -1,1 +1,60 @@
-<!doctype html public "-//IETF//DTD HTML 2.0//EN"><HTML><HEAD><TITLE>MUL Instruction</TITLE></HEAD><BODY><H2>MUL Instruction</h2><table border=0 valign=top cellpadding=5><tr>	<td><b>Purpose:</b></td><td>To perform arithmetic multiplication</td><tr>	<td><b>Format:</b></td><td>opcode mulr.rx, prod.mx<br>								opcode mulr.rx, muld.rx, prod.wx</td><tr>	<td><b>Operation:</b></td><td>prod &lt- prod + mulr;<br>								      prod &lt- muld * mulr;</td><tr>	<td valign=top><b>Condition<br>Codes:</b></td>		<td>N &lt- prod LSS 0;<br>			Z &lt- prod EQL 0;<br>			V &lt- overflow;<br>			C &lt- 0;</td><tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Overflow;<br>							Floating Overflow;<br>							Floating Underflow;<br>							Reserved Operand (Float)</td><tr>	<td valign=top><b>Opcodes:<b></td>		<td>			<table border=0 valign=top cellpadding=2>			<tr> <td>84</td><td>MULB2</td><td>Multiply Byte 2 Operand</td>			<tr> <td>85</td><td>MULB3</td><td>Multiply Byte 3 Operand</td>			<tr> <td>A4</td><td>MULW2</td><td>Multiply Word 3 Operand</td>			<tr> <td>A5</td><td>MULW3</td><td>Multiply Word 2 Operand</td>			<tr> <td>C4</td><td>MULL2</td><td>Multiply Long 2 Operand</td>			<tr> <td>C5</td><td>MULL3</td><td>Multiply Long 3 Operand</td>			<tr> <td>44</td><td>MULF2</td><td>Multiply Float 2 Operand</td>			<tr> <td>45</td><td>MULF3</td><td>Multiply Float 3 Operand</td>			<tr> <td>64</td><td>MULD2</td><td>Multiply Double 2 Operand</td>			<tr> <td>65</td><td>MULD3</td><td>Multiply Double 3 Operand</td>			</table>		</td><tr>	<td valign=top><b>Description:</b></td>		<td>In the 2 operand format, the product operand is multiplied by the multiplier operand and the product operand is replaced with the result. The multiplier operand is unaffected.<p>In the 3 Operand format, the multiplicand is multiplied by the multiplier operand and the product operand is replaced with the result.The multiplicand and multiplier operands are unaffected.<p>In floating point format, the result is rounded.</td><tr>	<td valign=top><b>Notes:</b></td>		<td><dl compact>		<dt>1.<dd>Integer overflow occurs if the high half of the double length result is not equal to the sign extension of the low half. On overflow, the product operand is replaced by the low order bits of the true result.		<dt>2.<dd>On a floating reserved operand abort, the product is unaffected and the condition codes are unpredictable.		<dt>3.<dd>On floating underflow, the product operand is replaced by 0.		<dt>4.<dd>On floating overflow, the product operand is replaced by an operand of all 0 bits except for the sign bit of 1 (a reserved operand (-1)). N &lt- 1; Z &lt- 0; V &lt- 1; and C &lt- 0.		</dl>		</td></table></BODY></HTML>
+<!doctype html public "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>MUL Instruction
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2>MUL Instruction</h2>
+
+<table border=0 valign=top cellpadding=5>
+
+<tr>	<td><b>Purpose:</b></td><td>To perform arithmetic multiplication</td>
+<tr>	<td><b>Format:</b></td><td>opcode mulr.rx, prod.mx<br>
+								opcode mulr.rx, muld.rx, prod.wx</td>
+<tr>	<td><b>Operation:</b></td><td>prod &lt- prod + mulr;<br>
+								      prod &lt- muld * mulr;</td>
+<tr>	<td valign=top><b>Condition<br>Codes:</b></td>
+		<td>N &lt- prod LSS 0;<br>
+			Z &lt- prod EQL 0;<br>
+			V &lt- overflow;<br>
+			C &lt- 0;</td>
+<tr>	<td valign=top><B>Exceptions:</B></td><td>Integer Overflow;<br>
+							Floating Overflow;<br>
+							Floating Underflow;<br>
+							Reserved Operand (Float)</td>
+<tr>	<td valign=top><b>Opcodes:<b></td>
+		<td>
+			<table border=0 valign=top cellpadding=2>
+			<tr> <td>84</td><td>MULB2</td><td>Multiply Byte 2 Operand</td>
+			<tr> <td>85</td><td>MULB3</td><td>Multiply Byte 3 Operand</td>
+			<tr> <td>A4</td><td>MULW2</td><td>Multiply Word 3 Operand</td>
+			<tr> <td>A5</td><td>MULW3</td><td>Multiply Word 2 Operand</td>
+			<tr> <td>C4</td><td>MULL2</td><td>Multiply Long 2 Operand</td>
+			<tr> <td>C5</td><td>MULL3</td><td>Multiply Long 3 Operand</td>
+			<tr> <td>44</td><td>MULF2</td><td>Multiply Float 2 Operand</td>
+			<tr> <td>45</td><td>MULF3</td><td>Multiply Float 3 Operand</td>
+			<tr> <td>64</td><td>MULD2</td><td>Multiply Double 2 Operand</td>
+			<tr> <td>65</td><td>MULD3</td><td>Multiply Double 3 Operand</td>
+			</table>
+		</td>
+<tr>	<td valign=top><b>Description:</b></td>
+		<td>In the 2 operand format, the product operand is multiplied by the multiplier operand and the product operand is replaced with the result. The multiplier operand is unaffected.
+<p>
+In the 3 Operand format, the multiplicand is multiplied by the multiplier operand and the product operand is replaced with the result.The multiplicand and multiplier operands are unaffected.
+<p>In floating point format, the result is rounded.</td>
+<tr>	<td valign=top><b>Notes:</b></td>
+		<td><dl compact>
+		<dt>1.<dd>Integer overflow occurs if the high half of the double length result is not equal to the sign extension of the low half. On overflow, the product operand is replaced by the low order bits of the true result.
+		<dt>2.<dd>On a floating reserved operand abort, the product is unaffected and the condition codes are unpredictable.
+		<dt>3.<dd>On floating underflow, the product operand is replaced by 0.
+		<dt>4.<dd>On floating overflow, the product operand is replaced by an operand of all 0 bits except for the sign bit of 1 (a reserved operand (-1)). N &lt- 1; Z &lt- 0; V &lt- 1; and C &lt- 0.
+		</dl>
+		</td>
+</table>
+
+</BODY>
+
+</HTML>
