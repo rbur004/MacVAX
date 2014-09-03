@@ -1,0 +1,42 @@
+<HTML>
+
+<HEAD>
+<TITLE>To Menu
+</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2>To Menu</H2>
+<ul>
+	<TABLE border=1 cellpadding=5 width=90%>
+	<tr><td valign=top><IMG SRC="To-Menu.gif"></td>
+	<td>
+This set of commands is used for moving to the appropriate location in the Memory Dump window.
+
+<h3>To Address</h3>
+A dialog box prompts for the address to go to. Address may be entered in hexadecimal (eg. 0x200) or in decimal (eg 512). A label (data or code) from the program may also be entered. If the Physical Memory window is the front window then this option scrolls the Physical Memory  rather than Memory Dump window.
+
+<h3>To Code Start, To Data Start</h3>
+To Code Start and To Data Start moves to the start of the code segment and data segment respectively and select the byte at that memory location.
+
+<h3>To PC, To SP, To FP, To AP</h3>
+To PC, SP, FP, and AP moves to the location pointed to by the current value of the respective register.
+
+<h3>To USP, To SSP, To ESP, To KSP, To ISP, To P0BR</h3>
+To USP,  SSP, ESP, KSP, ISP, P0BR moves to the location pointed to by the current value of the respective internal processor register.
+
+<h3>To P1BR + 0x800000</h3>
+To P1BR + 0x800000 moves to the location pointed to by the current value of the P1BR  internal processor register + 0x800000. This moves to the end of the P1 Page table.
+
+<h3>To SCBB, To SBR, To PCBB</h3>
+To SCBB, SBR, PCBB moves to the virtual address corresponding to the current physical address of the respective register. As these registers hold physical addresses not virtual addresses, MacVax assumes the system will always place the SCBB at 0x80000000, the SBR at 0x80000A00 and the PCBB at 0x7FFFFE00 in virtual space.
+	</td>	
+	</tr>
+	</Table>
+</ul>
+
+
+</BODY>
+
+</HTML>

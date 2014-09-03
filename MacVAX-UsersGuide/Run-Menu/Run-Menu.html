@@ -1,0 +1,51 @@
+<HTML>
+
+<HEAD>
+<TITLE>Run Menu
+</TITLE>
+</HEAD>
+
+<BODY>
+
+<table border=1 cellpadding=5><tr><td valign=top><IMG SRC="Run-Menu.gif"></td><td>
+
+	<A HREF="Reset-Process-Item.html"><h3>Reset Process</h3></A>
+	<h3>Go / Continue</h3>
+Choosing <b>Go / Continue</b> will start the program executing from the location of the current PC.  Execution will continue until<br>
+<li> the program finishes
+<li> a break point or watch point is encountered
+<li> the program is interrupted using the <b>Pause</b> menu item.
+<li> an exception such as an illegal memory reference.
+While a program is "Going", the display windows, with the exception of the I/O window, are normally not updated.  However, a special <A HREF="../../xfc/WindowMagement.html#xfc_14"><b>xfc #UPDATE_WINDOWS</b></A>  call exists to force an update of all windows (see the I/O section in the  Appendix). 
+
+	<h3>Step-Step</h3>
+	<b>Step-Step</b> executes one instruction at a time.  It then updates the contents of all the windows, and continues with the next instruction.  <b>Step-Step</b> can be interrupted using the <b>Pause</b> menu item.
+
+	<h3>Step</h3>
+<b>Step</b> executes one instruction, updates all the windows, and then stops.  
+
+	<h3>Pause</h3>
+	The <b>Pause</b> command allows you to interrupt MacVAX whilst it is executing your program.  <b>Pause</b> will interrupt both the <b>Go / Continue</b> and <b>Step-Step</b> modes of operation.
+
+	<h3>Toggle Watch / Break Points</h3>
+	The <B>Toggle Watch/Break Points</B> command is used to set watch and break points in your program.  To set a watch or break point, select a byte in the <B>Memory Dump</B> or <B>Program</B> window, and choose the <B>Toggle Watch/Break Points</B> command.  A rectangle appears around the location in the window to indicate the break point.  This may also be done under operating system control using <A HREF="../../xfc/System.html#xfc_137"><b>xfc #SET_WATCHPOINTS</b></A>.
+
+	<h3>Clear All Watch Points</h3>
+	Removes all set watch/break points. This may also be done under operating system control using <A HREF="../../xfc/System.html#xfc_136"><b>xfc #CLEAR_WATCHPOINTS</b></A>.
+	
+	<h3>Stop on Read<br>
+	    Stop on Write</h3>
+	These command toggles between enabling and disabling when watch/break points will cause a break in program execution.  Turning <b>Stop on Read</b> on means that reads of watch and break points memory addresses will cause program execution to be interrupted.  Turning <b>Stop on Write</b> on means that writes to watch and break points memory addresses will cause program execution to be interrupted. If both are disabled, MacVAX will continue execution as if no watch/break points are set.  However, the simulator doesn’t forget where these points were, and will restore them if you choose to enable either option again at a later time.
+MacVAX identifies watch and break points by drawing a rectangle around the locations in the <B>Memory Dump</B> and <B>Program</B> windows.
+
+	<h3>Display Memory Usage</h3>
+	Presents a dialog box with memory usage statistics.
+
+</td></tr></table>
+
+</ul>
+
+
+</BODY>
+
+</HTML>
