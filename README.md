@@ -32,3 +32,6 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Nb. This code relies on the MacVAX-mstdio library.
+
+Documentation (Some has been lost over time) http://rbur004.github.io/MacVAX/
+
